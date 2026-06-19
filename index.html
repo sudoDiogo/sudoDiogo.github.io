@@ -1,11 +1,230 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seu Nome — Portfólio</title>
+<meta name="description" content="Portfólio de projetos e atividades de programação.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hello World</h1>
+
+<canvas id="matrix-bg"></canvas>
+
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="logo">
+      <span class="logo-bracket">&lt;</span>Seu Nome<span class="logo-bracket">/&gt;</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#home" class="nav-link active" data-label="01">home</a>
+      <a href="#projetos" class="nav-link" data-label="02">projetos</a>
+      <a href="#contato" class="nav-link" data-label="03">contato</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">
+        <span class="dot"></span>
+        <span class="terminal-line">$ whoami</span>
+      </p>
+      <h1 class="hero-title">
+        Olá, eu sou <span class="gradient-text">Seu Nome</span>
+      </h1>
+      <p class="hero-subtitle">
+        Estudante de programação documentando, semestre a semestre,
+        os exercícios e projetos que vou construindo pelo caminho.
+      </p>
+      <div class="hero-cta">
+        <a href="#projetos" class="btn btn-primary">ver projetos</a>
+        <a href="#contato" class="btn btn-ghost">entrar em contato</a>
+      </div>
+    </div>
+
+    <div class="hero-panel" aria-hidden="true">
+      <div class="code-window">
+        <div class="code-window-bar">
+          <span class="wdot wdot-r"></span>
+          <span class="wdot wdot-y"></span>
+          <span class="wdot wdot-g"></span>
+          <span class="code-window-title">sobre_mim.py</span>
+        </div>
+        <pre class="code-body"><code><span class="c-key">class</span> <span class="c-class">Estudante</span>:
+    <span class="c-key">def</span> <span class="c-fn">__init__</span>(<span class="c-self">self</span>):
+        <span class="c-self">self</span>.nome = <span class="c-str">"Seu Nome"</span>
+        <span class="c-self">self</span>.foco = <span class="c-str">"programação"</span>
+        <span class="c-self">self</span>.status = <span class="c-str">"aprendendo"</span>
+        <span class="c-self">self</span>.cafe = <span class="c-num">True</span>
+
+    <span class="c-key">def</span> <span class="c-fn">objetivo</span>(<span class="c-self">self</span>):
+        <span class="c-key">return</span> <span class="c-str">"construir coisas boas"</span>
+<span class="cursor-blink">_</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos" class="projects">
+    <div class="section-head">
+      <p class="section-eyebrow">
+        <span class="terminal-line">$ ls ./projetos</span>
+      </p>
+      <h2 class="section-title">Projetos</h2>
+      <p class="section-desc">
+        Atividades e trabalhos de programação desenvolvidos ao longo do semestre.
+        Esta área será atualizada conforme os projetos forem concluídos.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+
+      <article class="project-card project-card--empty">
+        <div class="card-top">
+          <span class="file-tag">projeto_01.md</span>
+          <span class="status-pill">em breve</span>
+        </div>
+        <div class="card-empty-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Aguardando upload</h3>
+        <p class="card-text">Esse espaço vai receber o primeiro projeto do semestre assim que ele for adicionado.</p>
+      </article>
+
+      <article class="project-card project-card--empty">
+        <div class="card-top">
+          <span class="file-tag">projeto_02.md</span>
+          <span class="status-pill">em breve</span>
+        </div>
+        <div class="card-empty-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Aguardando upload</h3>
+        <p class="card-text">Esse espaço vai receber o segundo projeto do semestre assim que ele for adicionado.</p>
+      </article>
+
+      <article class="project-card project-card--empty">
+        <div class="card-top">
+          <span class="file-tag">projeto_03.md</span>
+          <span class="status-pill">em breve</span>
+        </div>
+        <div class="card-empty-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Aguardando upload</h3>
+        <p class="card-text">Esse espaço vai receber o terceiro projeto do semestre assim que ele for adicionado.</p>
+      </article>
+
+      <article class="project-card project-card--empty">
+        <div class="card-top">
+          <span class="file-tag">projeto_04.md</span>
+          <span class="status-pill">em breve</span>
+        </div>
+        <div class="card-empty-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Aguardando upload</h3>
+        <p class="card-text">Esse espaço vai receber o quarto projeto do semestre assim que ele for adicionado.</p>
+      </article>
+
+      <article class="project-card project-card--empty">
+        <div class="card-top">
+          <span class="file-tag">projeto_05.md</span>
+          <span class="status-pill">em breve</span>
+        </div>
+        <div class="card-empty-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Aguardando upload</h3>
+        <p class="card-text">Esse espaço vai receber o quinto projeto do semestre assim que ele for adicionado.</p>
+      </article>
+
+      <article class="project-card project-card--empty">
+        <div class="card-top">
+          <span class="file-tag">projeto_06.md</span>
+          <span class="status-pill">em breve</span>
+        </div>
+        <div class="card-empty-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Aguardando upload</h3>
+        <p class="card-text">Esse espaço vai receber o sexto projeto do semestre assim que ele for adicionado.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="contact">
+    <div class="contact-inner">
+      <p class="section-eyebrow">
+        <span class="terminal-line">$ contato --enviar</span>
+      </p>
+      <h2 class="section-title">Vamos conversar</h2>
+      <p class="section-desc">
+        Aberto a trocar ideias, oportunidades de estágio ou só falar sobre código.
+      </p>
+
+      <div class="contact-grid">
+        <a href="mailto:seuemail@exemplo.com" class="contact-card">
+          <span class="contact-icon">✉</span>
+          <span class="contact-label">email</span>
+          <span class="contact-value">seuemail@exemplo.com</span>
+        </a>
+        <a href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <span class="contact-icon">⌥</span>
+          <span class="contact-label">github</span>
+          <span class="contact-value">github.com/seu-usuario</span>
+        </a>
+        <a href="https://linkedin.com/in/seu-usuario" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <span class="contact-icon">in</span>
+          <span class="contact-label">linkedin</span>
+          <span class="contact-value">linkedin.com/in/seu-usuario</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p><span class="footer-binary">01001000 01101001</span> — feito com <span class="heart">♥</span> e muito café · <span id="year"></span></p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
