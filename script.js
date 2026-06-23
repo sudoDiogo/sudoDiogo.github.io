@@ -45,7 +45,6 @@
 
   function loop() {
     frame++;
-    // throttle slightly for a calmer rain
     if (frame % 2 === 0) draw();
     requestAnimationFrame(loop);
   }
@@ -56,7 +55,6 @@
   if (!prefersReducedMotion) {
     requestAnimationFrame(loop);
   } else {
-    // static single frame for reduced motion users
     draw();
   }
 })();
@@ -139,4 +137,72 @@
 (function setFooterYear() {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+})();
+
+// ============================================
+// PROJECT MODAL CONTROLLER (POP-UP)
+// ============================================
+(function initProjectModal() {
+  const modal = document.getElementById('projectModal');
+  const modalFrame = document.getElementById('modalFrame');
+  const modalTitle = document.getElementById('modalTitle');
+  const closeBtn = document.getElementById('closeModal');
+  const projectCards = document.querySelectorAll('.project-card[data-file]');
+
+  if (!modal || !modalFrame || !closeBtn) return;
+
+  // Função para abrir o pop-up
+  function openModal(filePath, fileName) {
+    modalFrame.src = filePath;
+    if (modalTitle && fileName) {
+      modalTitle.textContent = fileName;
+    }
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Trava o scroll do fundo
+  }
+
+  // Função para fechar o pop-up
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    modalFrame.src = ''; // Limpa o iframe para parar a execução/carregamento do arquivo
+    document.body.style.overflow = ''; // Devolve o scroll do fundo
+  }
+
+  // Adiciona evento de clique e teclado (Enter) em cada card de projeto
+  projectCards.forEach(card => {
+    const filePath = card.getAttribute('data-file');
+    const fileTag = card.querySelector('.file-tag');
+    const fileName = fileTag ? fileTag.textContent : 'Visualizar Arquivo';
+
+    // Clique do mouse
+    card.addEventListener('click', () => {
+      openModal(filePath, fileName);
+    });
+
+    // Acessibilidade por teclado (Enter)
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        openModal(filePath, fileName);
+      }
+    });
+  });
+
+  // Fecha ao clicar no botão 'X'
+  closeBtn.addEventListener('click', closeModal);
+
+  // Fecha ao clicar fora da janela do conteúdo (no fundo escuro)
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Fecha ao apertar a tecla ESC
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeModal();
+    }
+  });
 })();
