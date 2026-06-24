@@ -1,15 +1,15 @@
 const PROJECTS = [
   {
     id: "p01",
-    title: "Projeto 01",
-    tag: "Semana 01",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto. Explique o objetivo, o problema resolvido e o contexto da atividade.",
-    concepts: ["variáveis", "tipos primitivos", "entrada e saída"],
+    title: "Preenchimento do formulário de diagnóstico inicial",
+    tag: "Formulário/quiz",
+    status: "Completo",
+    tech: ["Google forms"],
+    desc: "Primeiro quiz",
+    concepts: [],
     files: [
       // { label: "main.py",    path: "arquivos/p01_main.py" },
-      // { label: "enunciado.pdf", path: "arquivos/p01_enunciado.pdf" }
+
     ]
   },
   {
