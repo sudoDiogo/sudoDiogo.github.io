@@ -20,7 +20,9 @@ const PROJECTS = [
     tech: ["Google forms"],
     desc: "Quiz para avaliar lógica de programação",
     concepts: ["condicionais", "operadores lógicos", "programação"],
-    files: []
+    files: [
+      { label: "2.txt",    path: "arquivos/2.txt" }
+    ]
   },
   {
     id: "p03",
@@ -54,7 +56,7 @@ const PROJECTS = [
     desc: "Lista de exercícios de introdução resolvidos em python.",
     concepts: ["introdução ao python"],
     files: [
-        { label: "teste",    path: "arquivos/8.pdf" }
+        { label: "5.pdf",    path: "arquivos/5.pdf" }
     ]
   },
   {
