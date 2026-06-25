@@ -8,7 +8,7 @@ const PROJECTS = [
     desc: "Primeiro quiz",
     concepts: [],
     files: [
-       { label: "confirmacao_resposta.png",    path: "arquivos/1confirmacao_resposta_quiz.png" },
+       { label: "confirmacao_resposta.png",    path: "arquivos/1confirmacao_resposta_quiz.png" }
 
     ]
   },
@@ -53,7 +53,9 @@ const PROJECTS = [
     tech: ["Python"],
     desc: "Lista de exercícios de introdução resolvidos em python.",
     concepts: ["introdução ao python"],
-    files: []
+    files: [
+        { label: "teste",    path: "arquivos/8.pdf" }
+    ]
   },
   {
     id: "p06",
