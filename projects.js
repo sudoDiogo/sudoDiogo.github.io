@@ -1,92 +1,89 @@
+
 const PROJECTS = [
   {
     id: "p01",
-    title: "Preenchimento do formulário de diagnóstico inicial",
-    tag: "Formulário/quiz",
-    status: "Completo",
-    tech: ["Google forms"],
-    desc: "Primeiro quiz",
-    concepts: [],
+    title: "Projeto 01",
+    tag: "Semana 01",
+    status: "em breve",
+    tech: ["Python"],
+    desc: "Descrição do que foi desenvolvido neste projeto. Explique o objetivo e o contexto da atividade.",
+    concepts: ["variáveis", "tipos primitivos", "entrada e saída"],
     files: [
-       { label: "confirmacao_resposta.png",    path: "arquivos/1confirmacao_resposta_quiz.png" }
-
+       { label: "4pdf.pdf",       path: "arquivos/4pdf.pdf" }
+      // { label: "enunciado.pdf", path: "arquivos/p01_enunciado.pdf" }
     ]
   },
   {
     id: "p02",
-    title: "Quiz de lógica de programação",
-    tag: "Formulário/quiz",
-    status: "Completo",
-    tech: ["Google forms"],
-    desc: "Quiz para avaliar lógica de programação",
-    concepts: ["condicionais", "operadores lógicos", "programação"],
+    title: "Projeto 02",
+    tag: "Semana 02",
+    status: "em breve",
+    tech: ["Python"],
+    desc: "Descrição breve do que foi desenvolvido neste projeto.",
+    concepts: ["condicionais", "operadores lógicos"],
     files: [
-      { label: "2.txt",    path: "arquivos/2.txt" }
+      { label: "21.png",       path: "arquivos/21.png" }
     ]
   },
   {
     id: "p03",
-    title: "Diagnóstico de lógica de programação",
-    tag: "Formulário/quiz",
-    status: "Completo",
-    tech: ["Google forms"],
-    desc: "Avaliação diagnóstica do quiz anterior sobre lógica de programação.",
+    title: "Projeto 03",
+    tag: "Semana 03",
+    status: "em breve",
+    tech: ["Python"],
+    desc: "Descrição breve do que foi desenvolvido neste projeto.",
     concepts: ["laços de repetição", "while", "for"],
-    files: []
+    files: [
+    ]
   },
   {
     id: "p04",
-    title: "Lista de 15 exercícios: escolher e resolver",
-    tag: "Programação",
-    status: "Completo",
-    tech: ["C"],
-    desc: "Exercícios resolvidos em C.",
-    concepts: ["condicionais", "programação introdutória"],
-    files: [
-          { label: "4pdf.pdf",    path: "arquivos/4pdf.pdf" }
-      
-    ]
+    title: "Projeto 04",
+    tag: "Semana 04",
+    status: "em breve",
+    tech: ["Python"],
+    desc: "Descrição breve do que foi desenvolvido neste projeto.",
+    concepts: ["funções", "parâmetros", "retorno"],
+    files: []
   },
   {
     id: "p05",
-    title: "Lista de 10 Exercícios da INTRODUCAO A ALGORITMOS com Python",
-    tag: "Lista de programação",
-    status: "Completo",
+    title: "Projeto 05",
+    tag: "Semana 05",
+    status: "em breve",
     tech: ["Python"],
-    desc: "Lista de exercícios de introdução resolvidos em python.",
-    concepts: ["introdução ao python"],
-    files: [
-        { label: "5.pdf",    path: "arquivos/5.pdf" }
-    ]
+    desc: "Descrição breve do que foi desenvolvido neste projeto.",
+    concepts: ["listas", "tuplas", "iteração"],
+    files: []
   },
   {
     id: "p06",
-    title: "Geração e Avaliação de Exercícios de Algoritmos com LLMs",
-    tag: "Geração com LLM",
-    status: "Completo",
-    tech: ["Claude AI", "Gemini", "Chat GPT"],
-    desc: "Geração de exercícios de programação criados por LLM's.",
-    concepts: ["engenharia de prompt", "Controle de LLM's"],
+    title: "Projeto 06",
+    tag: "Semana 06",
+    status: "em breve",
+    tech: ["Python"],
+    desc: "Descrição breve do que foi desenvolvido neste projeto.",
+    concepts: ["dicionários", "sets", "busca"],
     files: []
   },
   {
     id: "p07",
-    title: "Quiz de Avaliação da Atividade: Uso de LLMs em Algoritmos e Programação",
-    tag: "Formulário/quiz",
-    status: "Completo",
-    tech: ["Google forms"],
-    desc: "Avaliação da atividade anterior com LLM's",
-    concepts: ["Diagnóstico"],
+    title: "Projeto 07",
+    tag: "Semana 07",
+    status: "em breve",
+    tech: ["Python"],
+    desc: "Descrição breve do que foi desenvolvido neste projeto.",
+    concepts: ["strings", "métodos de string", "formatação"],
     files: []
   },
   {
     id: "p08",
-    title: "Resolver os 5 exercícios em papel",
-    tag: "Programar no papel",
-    status: "Completo",
-    tech: ["Papel"],
-    desc: "Escrita de pseudocódigos no papel",
-    concepts: ["criatividade", "lógica"],
+    title: "Projeto 08",
+    tag: "Semana 08",
+    status: "em breve",
+    tech: ["Python"],
+    desc: "Descrição breve do que foi desenvolvido neste projeto.",
+    concepts: ["arquivos", "leitura", "escrita"],
     files: []
   },
   {
