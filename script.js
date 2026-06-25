@@ -1,423 +1,406 @@
-// ============================================
-// MATRIX / BINARY RAIN BACKGROUND
-// ============================================
-(function initMatrixRain() {
+/* ==============================================
+   MATRIX / BINARY RAIN
+   ============================================== */
+(function () {
   const canvas = document.getElementById('matrix-bg');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  let columns = [];
-  const fontSize = 16;
-  let frame = 0;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let cols = [], frame = 0;
+  const FS = 16;
 
   function resize() {
     canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
-    const count = Math.floor(canvas.width / fontSize);
-    columns = new Array(count).fill(0).map(() => Math.floor(Math.random() * -50));
+    const n = Math.floor(canvas.width / FS);
+    cols = Array.from({ length: n }, () => Math.floor(Math.random() * -60));
   }
 
   function draw() {
-    ctx.fillStyle = 'rgba(7, 11, 18, 0.07)';
+    ctx.fillStyle = 'rgba(7,11,18,0.07)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = fontSize + 'px JetBrains Mono, monospace';
-
-    for (let i = 0; i < columns.length; i++) {
-      const char = Math.random() > 0.5 ? '1' : '0';
-      const x = i * fontSize;
-      const y = columns[i] * fontSize;
+    ctx.font = FS + 'px JetBrains Mono, monospace';
+    cols.forEach((y, i) => {
       ctx.fillStyle = Math.random() > 0.975 ? '#00d4ff' : '#00ff9d';
-      ctx.fillText(char, x, y);
-      if (y > canvas.height && Math.random() > 0.975) columns[i] = 0;
-      else columns[i]++;
-    }
+      ctx.fillText(Math.random() > 0.5 ? '1' : '0', i * FS, y * FS);
+      if (y * FS > canvas.height && Math.random() > 0.975) cols[i] = 0;
+      else cols[i]++;
+    });
   }
 
-  function loop() {
-    frame++;
-    if (frame % 2 === 0) draw();
-    requestAnimationFrame(loop);
-  }
+  function loop() { if (frame++ % 2 === 0) draw(); requestAnimationFrame(loop); }
 
   window.addEventListener('resize', resize);
   resize();
-  if (!prefersReducedMotion) requestAnimationFrame(loop);
-  else draw();
+  if (!reduced) requestAnimationFrame(loop); else draw();
 })();
 
-// ============================================
-// MOBILE NAV TOGGLE
-// ============================================
-(function initNavToggle() {
+/* ==============================================
+   NAV TOGGLE (mobile)
+   ============================================== */
+(function () {
   const toggle = document.getElementById('navToggle');
   const links  = document.querySelector('.nav-links');
   if (!toggle || !links) return;
 
   toggle.addEventListener('click', () => {
-    const isOpen = links.classList.toggle('open');
-    toggle.classList.toggle('open', isOpen);
-    toggle.setAttribute('aria-expanded', String(isOpen));
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
   });
-
-  links.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
 })();
 
-// ============================================
-// ACTIVE NAV LINK ON SCROLL
-// ============================================
-(function initActiveNav() {
+/* ==============================================
+   ACTIVE NAV ON SCROLL
+   ============================================== */
+(function () {
   const sections = document.querySelectorAll('main section[id]');
   const navLinks  = document.querySelectorAll('.nav-link');
-  if (!sections.length || !navLinks.length) return;
+  if (!sections.length) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach((link) => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-          });
-        }
-      });
-    },
-    { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
-  );
-  sections.forEach((s) => observer.observe(s));
-})();
-
-// ============================================
-// SCROLL REVEAL
-// ============================================
-function applyReveal(container) {
-  const targets = container.querySelectorAll(
-    '.project-card, .stack-card, .section-head, .stack-inner > p, .stack-inner > h2'
-  );
-  targets.forEach((el) => {
-    el.classList.add('reveal');
-    revealObserver.observe(el);
-  });
-}
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        revealObserver.unobserve(entry.target);
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
       }
     });
-  },
-  { threshold: 0.1 }
-);
+  }, { rootMargin: '-45% 0px -45% 0px' }).observe(
+    // observe all sections
+    ...[...sections].map(s => (new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting)
+          navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' }).observe(s), s))
+  );
+})();
 
-// run on static elements immediately
-document.querySelectorAll('.section-head, .stack-card, .stack-inner > p, .stack-inner > h2')
-  .forEach((el) => { el.classList.add('reveal'); revealObserver.observe(el); });
-
-// ============================================
-// FOOTER YEAR
-// ============================================
-(function setFooterYear() {
+/* ==============================================
+   FOOTER YEAR
+   ============================================== */
+(function () {
   const el = document.getElementById('year');
   if (el) el.textContent = new Date().getFullYear();
 })();
 
-// ============================================
-// PROJECT CARDS — render from PROJECTS array
-// ============================================
-(function renderProjects() {
+/* ==============================================
+   SCROLL REVEAL (applied after cards render too)
+   ============================================== */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('is-visible'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+
+function enableReveal(root) {
+  root.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+}
+
+document.querySelectorAll('.section-head, .stack-card').forEach(el => {
+  el.classList.add('reveal');
+  revealObs.observe(el);
+});
+
+/* ==============================================
+   PROJECT CARD RENDERER
+   ============================================== */
+(function () {
   const grid = document.getElementById('projects-grid');
   if (!grid || typeof PROJECTS === 'undefined') return;
 
-  const iconSVG = `
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
-      <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
+  // small inline SVGs
+  const ICON_PROJECT = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
+  </svg>`;
+
+  function chipIcon(type) {
+    if (type === 'pdf') return `<svg viewBox="0 0 16 16" fill="none" width="13" height="13">
+      <path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+      <path d="M10 1v3h3M5 8h6M5 11h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
     </svg>`;
-
-  const fileIconSVG = (type) => type === 'pdf'
-    ? `<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14">
-        <path d="M5 2h7l4 4v12H5V2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-        <path d="M12 2v4h4M7 11h6M7 14h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-       </svg>`
-    : `<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14">
-        <path d="M5 2h7l4 4v12H5V2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-        <path d="M12 2v4h4M7 9l2 2-2 2M11 13h2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-       </svg>`;
-
-  function getFileType(path) {
-    const ext = path.split('.').pop().toLowerCase();
-    if (ext === 'pdf') return 'pdf';
-    if (ext === 'py')  return 'py';
-    return 'other';
+    if (type === 'py') return `<svg viewBox="0 0 16 16" fill="none" width="13" height="13">
+      <path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+      <path d="M10 1v3h3M5 7l2.5 2L5 11M9 11h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+    return `<svg viewBox="0 0 16 16" fill="none" width="13" height="13">
+      <path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+      <path d="M10 1v3h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    </svg>`;
   }
 
-  function buildFilesHTML(files) {
-    if (!files || files.length === 0) return '';
-    return `
-      <div class="card-files">
-        <p class="card-files-label">arquivos</p>
-        <div class="card-file-list">
-          ${files.map((f, i) => {
-            const type = getFileType(f.path);
-            return `<button class="file-chip" data-project-idx="${f._pidx}" data-file-idx="${i}" title="Abrir ${f.label}">
-              ${fileIconSVG(type)}
-              <span>${f.label}</span>
-            </button>`;
-          }).join('')}
-        </div>
-      </div>`;
+  function fileType(path) {
+    const ext = (path || '').split('.').pop().toLowerCase();
+    return ext === 'pdf' ? 'pdf' : ext === 'py' ? 'py' : ext === 'png' || ext === 'jpg' || ext === 'jpeg' ? 'img' : 'other';
   }
-
-  function buildConceptsHTML(concepts) {
-    if (!concepts || concepts.length === 0) return '';
-    return `<div class="card-concepts">
-      ${concepts.map(c => `<span class="concept-tag">${c}</span>`).join('')}
-    </div>`;
-  }
-
-  // Tag each file with its project index for lookup on click
-  const allProjects = PROJECTS.map((p, pidx) => ({
-    ...p,
-    files: (p.files || []).map(f => ({ ...f, _pidx: pidx }))
-  }));
 
   grid.innerHTML = '';
 
-  allProjects.forEach((proj, idx) => {
+  PROJECTS.forEach((proj, pidx) => {
     const hasFiles = proj.files && proj.files.length > 0;
-    const isConcluded = proj.status === 'concluído';
-    const statusClass = isConcluded ? 'status-pill--done' : '';
+    const done = proj.status === 'concluído';
 
-    const article = document.createElement('article');
-    article.className = 'project-card';
-    article.dataset.idx = idx;
+    const card = document.createElement('article');
+    card.className = 'project-card reveal';
+    card.dataset.pidx = pidx;
 
-    article.innerHTML = `
+    // build file chips html
+    let filesHTML = '';
+    if (hasFiles) {
+      const chips = proj.files.map((f, fidx) => {
+        const t = fileType(f.path);
+        return `<button class="file-chip" data-pidx="${pidx}" data-fidx="${fidx}" type="button">
+          ${chipIcon(t)}<span>${f.label}</span>
+        </button>`;
+      }).join('');
+      filesHTML = `<div class="card-files"><p class="card-files-label">arquivos</p><div class="card-chip-row">${chips}</div></div>`;
+    }
+
+    // concepts
+    const tagsHTML = (proj.concepts || []).map(c => `<span class="concept-tag">${c}</span>`).join('');
+
+    card.innerHTML = `
       <div class="card-top">
         <span class="file-tag">${proj.tag}</span>
-        <span class="status-pill ${statusClass}">${proj.status}</span>
+        <span class="status-pill ${done ? 'status-pill--done' : ''}">${proj.status}</span>
       </div>
-
-      <div class="card-body">
+      <div class="card-body-row">
         <div class="card-left">
-          <div class="card-empty-icon">${iconSVG}</div>
+          <div class="card-icon">${ICON_PROJECT}</div>
           <h3 class="card-title">${proj.title}</h3>
           <p class="card-text">${proj.desc}</p>
-          ${buildFilesHTML(proj.files)}
+          ${filesHTML}
         </div>
-
         <div class="card-right">
-          <p class="card-tech-label">tecnologias</p>
-          <div class="card-tech-list">
+          <p class="card-aside-label">tecnologias</p>
+          <div class="card-tech-row">
             ${(proj.tech || []).map(t => `<span class="tech-badge">${t}</span>`).join('')}
           </div>
-          <p class="card-tech-label" style="margin-top:1rem">técnicas</p>
-          ${buildConceptsHTML(proj.concepts)}
+          <p class="card-aside-label" style="margin-top:1rem">técnicas</p>
+          <div class="card-concepts-row">${tagsHTML}</div>
         </div>
       </div>
     `;
 
-    grid.appendChild(article);
+    grid.appendChild(card);
   });
 
-  // store for modal usage
-  window._allProjects = allProjects;
+  // store globally so modal can access
+  window._PROJECTS = PROJECTS;
 
-  // after render, apply reveal
-  applyReveal(grid);
+  // kick off reveal for newly created cards
+  enableReveal(grid);
 })();
 
-// ============================================
-// MODAL — file viewer (PDF + Python)
-// ============================================
-(function initModal() {
+/* ==============================================
+   MODAL — visualizador de arquivos
+   ============================================== */
+(function () {
   const overlay  = document.getElementById('modalOverlay');
   const closeBtn = document.getElementById('modalClose');
-  const body     = document.getElementById('modalBody');
-  const title    = document.getElementById('modalTitle');
-  const badge    = document.getElementById('modalBadge');
+  const bodyEl   = document.getElementById('modalBody');
+  const titleEl  = document.getElementById('modalTitle');
+  const badgeEl  = document.getElementById('modalBadge');
   const tabsEl   = document.getElementById('modalFileTabs');
 
-  if (!overlay) return;
+  if (!overlay || !closeBtn) return;
 
-  let currentFiles = [];
-  let currentIdx   = 0;
+  let _proj  = null;
+  let _fidx  = 0;
 
-  function openModal(projectIdx, fileIdx) {
-    const proj  = (window._allProjects || [])[projectIdx];
-    if (!proj) return;
-
-    currentFiles = proj.files;
-    currentIdx   = fileIdx;
-    renderModalContent();
-
-    overlay.removeAttribute('hidden');
-    document.body.style.overflow = 'hidden';
+  /* ---------- open / close ---------- */
+  function openModal(pidx, fidx) {
+    const projects = window._PROJECTS;
+    if (!projects || !projects[pidx]) return;
+    _proj = projects[pidx];
+    _fidx = fidx;
+    render();
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden'; // lock scroll on <html>
     closeBtn.focus();
   }
 
   function closeModal() {
-    overlay.setAttribute('hidden', '');
-    document.body.style.overflow = '';
-    // clear iframe/content to stop PDF rendering
-    body.innerHTML = '';
-    tabsEl.innerHTML = '';
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = ''; // restore scroll
+    // wipe content so iframe stops loading
+    setTimeout(() => { bodyEl.innerHTML = ''; tabsEl.innerHTML = ''; }, 300);
   }
 
-  function getFileType(path) {
-    const ext = path.split('.').pop().toLowerCase();
+  /* ---------- file type ---------- */
+  function ftype(path) {
+    const ext = (path || '').split('.').pop().toLowerCase();
     if (ext === 'pdf') return 'pdf';
     if (ext === 'py')  return 'py';
+    if (['png','jpg','jpeg','gif','webp'].includes(ext)) return 'img';
     return 'other';
   }
 
-  function renderModalContent() {
-    const file = currentFiles[currentIdx];
+  /* ---------- render ---------- */
+  function render() {
+    const file = _proj.files[_fidx];
     if (!file) return;
+    const type = ftype(file.path);
 
-    const type = getFileType(file.path);
+    // badge
+    badgeEl.textContent = type.toUpperCase();
+    badgeEl.className   = 'modal-badge modal-badge--' + type;
+    titleEl.textContent = file.label;
 
-    // title & badge
-    title.textContent = file.label;
-    badge.textContent = type.toUpperCase();
-    badge.className   = 'modal-badge modal-badge--' + type;
+    // tabs (only if multiple files)
+    tabsEl.innerHTML = _proj.files.length > 1
+      ? _proj.files.map((f, i) =>
+          `<button class="modal-tab ${i === _fidx ? 'is-active' : ''}" data-fidx="${i}" type="button">${f.label}</button>`
+        ).join('')
+      : '';
 
-    // tabs
-    tabsEl.innerHTML = currentFiles.map((f, i) => {
-      const t = getFileType(f.path);
-      const active = i === currentIdx ? 'active' : '';
-      return `<button class="modal-tab ${active}" data-fidx="${i}">${f.label}</button>`;
-    }).join('');
-
-    tabsEl.querySelectorAll('.modal-tab').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        currentIdx = parseInt(btn.dataset.fidx);
-        renderModalContent();
-      });
+    tabsEl.querySelectorAll('.modal-tab').forEach(btn => {
+      btn.addEventListener('click', () => { _fidx = +btn.dataset.fidx; render(); });
     });
 
-    // content
-    body.innerHTML = '';
+    // body content
+    bodyEl.innerHTML = '';
 
     if (type === 'pdf') {
+      // embed PDF — works on GitHub Pages (same origin)
+      const wrap = document.createElement('div');
+      wrap.className = 'viewer-pdf-wrap';
+
       const iframe = document.createElement('iframe');
-      iframe.src   = file.path + '#toolbar=0&navpanes=0';
+      iframe.src   = file.path;
       iframe.title = file.label;
-      iframe.setAttribute('aria-label', 'Visualizador de PDF: ' + file.label);
-      body.appendChild(iframe);
+      iframe.setAttribute('allowfullscreen', '');
+      wrap.appendChild(iframe);
+      bodyEl.appendChild(wrap);
+
+    } else if (type === 'img') {
+      const wrap = document.createElement('div');
+      wrap.className = 'viewer-img-wrap';
+      const img = document.createElement('img');
+      img.src = file.path;
+      img.alt = file.label;
+      wrap.appendChild(img);
+      bodyEl.appendChild(wrap);
 
     } else if (type === 'py') {
-      body.innerHTML = `<div class="py-loading">
-        <span class="terminal-line">$ carregando ${file.label}...</span>
-      </div>`;
+      // fetch .py and render with highlight
+      bodyEl.innerHTML = `<div class="viewer-loading"><span class="terminal-line">$ carregando ${file.label}…</span></div>`;
 
       fetch(file.path)
-        .then((r) => {
-          if (!r.ok) throw new Error('Arquivo não encontrado (' + r.status + ')');
+        .then(r => {
+          if (!r.ok) throw new Error('HTTP ' + r.status + ' — arquivo não encontrado');
           return r.text();
         })
-        .then((code) => {
-          body.innerHTML = '';
-          const wrapper = document.createElement('div');
-          wrapper.className = 'py-viewer';
+        .then(code => {
+          bodyEl.innerHTML = '';
+          const wrap = document.createElement('div');
+          wrap.className = 'viewer-py-wrap';
 
-          const header = document.createElement('div');
-          header.className = 'py-header';
-          header.innerHTML = `
-            <div class="py-window-dots">
+          // fake window bar
+          wrap.innerHTML = `
+            <div class="py-bar">
               <span class="wdot wdot-r"></span>
               <span class="wdot wdot-y"></span>
               <span class="wdot wdot-g"></span>
-            </div>
-            <span class="py-filename">${file.label}</span>
-            <span class="py-lang">Python</span>
-          `;
+              <span class="py-bar-name">${file.label}</span>
+              <span class="py-bar-lang">Python</span>
+            </div>`;
 
           const pre  = document.createElement('pre');
-          const codeEl = document.createElement('code');
-          codeEl.textContent = code;
-          codeEl.className = 'py-code';
-          pre.appendChild(codeEl);
           pre.className = 'py-pre';
-
-          wrapper.appendChild(header);
-          wrapper.appendChild(pre);
-          body.appendChild(wrapper);
-
-          // minimal syntax highlight
-          highlightPython(codeEl);
+          const code_el = document.createElement('code');
+          code_el.className = 'py-code';
+          // set as text first, then highlight
+          code_el.textContent = code;
+          pre.appendChild(code_el);
+          wrap.appendChild(pre);
+          bodyEl.appendChild(wrap);
+          highlightPy(code_el);
         })
-        .catch((err) => {
-          body.innerHTML = `<div class="modal-error">
+        .catch(err => {
+          bodyEl.innerHTML = `<div class="viewer-error">
             <p class="terminal-line">$ erro: ${err.message}</p>
-            <p>Verifique se o arquivo <strong>${file.path}</strong> está na pasta <code>arquivos/</code> do repositório.</p>
+            <p style="margin-top:.8rem;color:var(--text-secondary)">
+              Verifique se <code>${file.path}</code> está na pasta <code>arquivos/</code> do repositório.
+            </p>
           </div>`;
         });
 
     } else {
-      body.innerHTML = `<div class="modal-error">
-        <p>Tipo de arquivo não suportado para visualização inline.</p>
+      bodyEl.innerHTML = `<div class="viewer-error">
+        <p>Tipo de arquivo não suportado para visualização.</p>
         <a href="${file.path}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="margin-top:1rem;display:inline-flex">
-          Abrir em nova aba
+          Abrir em nova aba ↗
         </a>
       </div>`;
     }
   }
 
-  // ── minimal Python syntax highlighter ──
-  function highlightPython(el) {
-    const keywords = ['def','class','return','if','elif','else','for','while','in','not','and','or',
-                      'import','from','as','try','except','finally','with','pass','break','continue',
-                      'lambda','yield','raise','True','False','None','self','print'];
-    let html = el.textContent
-      // escape HTML first
-      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-      // strings (double & single quote, single-line)
-      .replace(/(\"[^\"\\]*(?:\\.[^\"\\]*)*\"|\'[^\'\\]*(?:\\.[^\'\\]*)*\')/g,
-               '<span class="py-str">$1</span>')
-      // comments
-      .replace(/(#.*$)/gm, '<span class="py-comment">$1</span>')
+  /* ---------- minimal Python syntax highlight ---------- */
+  function highlightPy(el) {
+    const KW = ['False','None','True','and','as','assert','async','await','break',
+      'class','continue','def','del','elif','else','except','finally','for','from',
+      'global','if','import','in','is','lambda','nonlocal','not','or','pass',
+      'raise','return','try','while','with','yield','self','print','input','len',
+      'range','type','int','str','float','list','dict','set','tuple','bool'];
+
+    // work on raw text, build highlighted HTML
+    let src = el.textContent;
+    // We'll do a simple line-by-line pass to be safe
+    const lines = src.split('\n');
+    const out = lines.map(line => {
+      // escape HTML entities
+      let s = line.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+      // triple-quoted strings are not handled here (keep simple)
+      // single-line strings  "…" or '…'
+      s = s.replace(/("""[\s\S]*?"""|'''[\s\S]*?'''|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g,
+        m => `<span class="py-str">${m}</span>`);
+
+      // comment (only if not inside a string span already — simple heuristic: after first #)
+      s = s.replace(/(#.*)$/, m => `<span class="py-cmt">${m}</span>`);
+
       // numbers
-      .replace(/\b(\d+\.?\d*)\b/g, '<span class="py-num">$1</span>');
+      s = s.replace(/\b(\d+\.?\d*)\b/g, m => `<span class="py-num">${m}</span>`);
 
-    // keywords (only outside already-tagged spans — simple approach)
-    keywords.forEach(kw => {
-      html = html.replace(
-        new RegExp(`(?<!<[^>]*)\\b(${kw})\\b(?![^<]*>)`, 'g'),
-        '<span class="py-kw">$1</span>'
-      );
+      // keywords — skip inside already-tagged spans
+      KW.forEach(kw => {
+        s = s.replace(
+          new RegExp('(?<!<[^>]{0,200})\\b(' + kw + ')\\b(?![^<]*>)','g'),
+          `<span class="py-kw">$1</span>`
+        );
+      });
+
+      return s;
     });
-
-    el.innerHTML = html;
+    el.innerHTML = out.join('\n');
   }
 
-  // ── event wiring ──
-  document.addEventListener('click', (e) => {
+  /* ---------- event wiring ---------- */
+
+  // clicks on file chips (delegated — chips are created dynamically)
+  document.addEventListener('click', e => {
     const chip = e.target.closest('.file-chip');
     if (chip) {
-      const pidx = parseInt(chip.dataset.projectIdx);
-      const fidx = parseInt(chip.dataset.fileIdx);
-      openModal(pidx, fidx);
+      openModal(+chip.dataset.pidx, +chip.dataset.fidx);
+      return;
     }
+    // click on overlay backdrop closes modal
+    if (e.target === overlay) closeModal();
   });
 
   closeBtn.addEventListener('click', closeModal);
 
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closeModal();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !overlay.hasAttribute('hidden')) closeModal();
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
   });
 })();
