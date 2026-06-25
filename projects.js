@@ -8,7 +8,7 @@ const PROJECTS = [
     desc: "Primeiro quiz",
     concepts: [],
     files: [
-      // { label: "main.py",    path: "arquivos/p01_main.py" },
+       { label: "main.py",    path: "1confirmacao_resposta_quiz" },
 
     ]
   },
