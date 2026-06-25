@@ -14,7 +14,7 @@
 
 <canvas id="matrix-bg"></canvas>
 
-<!-- ============ NAVBAR ============ -->
+<!-- NAVBAR -->
 <header class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="#home" class="logo">
@@ -33,7 +33,7 @@
 
 <main>
 
-  <!-- ============ HOME ============ -->
+  <!-- HOME -->
   <section id="home" class="hero">
     <div class="hero-content">
       <p class="hero-eyebrow">
@@ -52,7 +52,6 @@
         <a href="#stack"    class="btn btn-ghost">ferramentas usadas</a>
       </div>
     </div>
-
     <div class="hero-panel" aria-hidden="true">
       <div class="code-window">
         <div class="code-window-bar">
@@ -75,40 +74,30 @@
     </div>
   </section>
 
-  <!-- ============ PROJETOS ============ -->
+  <!-- PROJETOS -->
   <section id="projetos" class="projects">
     <div class="section-head">
-      <p class="section-eyebrow">
-        <span class="terminal-line">$ ls ./projetos</span>
-      </p>
+      <p class="section-eyebrow"><span class="terminal-line">$ ls ./projetos</span></p>
       <h2 class="section-title">Projetos</h2>
       <p class="section-desc">
         Atividades e trabalhos de programação desenvolvidos ao longo do semestre.
-        Clique em qualquer arquivo para visualizá-lo — PDF abre no leitor embutido,
-        código Python abre com syntax highlight.
+        Clique nos botões de arquivo para abrir PDFs ou código Python diretamente no site.
       </p>
     </div>
-
-    <!-- Os cards são gerados pelo script.js a partir de projects.js -->
     <div class="projects-grid" id="projects-grid">
-      <div class="loading-state">
-        <span class="terminal-line">$ carregando projetos...</span>
-      </div>
+      <p class="loading-state"><span class="terminal-line">$ carregando projetos...</span></p>
     </div>
   </section>
 
-  <!-- ============ STACK ============ -->
+  <!-- STACK -->
   <section id="stack" class="stack-section">
     <div class="stack-inner">
-      <p class="section-eyebrow">
-        <span class="terminal-line">$ pip list &amp;&amp; cat requirements.txt</span>
-      </p>
+      <p class="section-eyebrow"><span class="terminal-line">$ pip list &amp;&amp; cat requirements.txt</span></p>
       <h2 class="section-title">Arsenal Técnico</h2>
       <p class="section-desc">
         Ferramentas, linguagens e inteligências artificiais que fizeram parte da
         construção de cada projeto ao longo do semestre.
       </p>
-
       <div class="stack-grid">
 
         <div class="stack-card">
@@ -120,11 +109,7 @@
           </div>
           <h3 class="stack-name">Python</h3>
           <p class="stack-desc">Linguagem principal usada em todos os projetos — desde scripts simples até estruturas orientadas a objetos.</p>
-          <div class="stack-tags">
-            <span class="stag">lógica</span>
-            <span class="stag">OOP</span>
-            <span class="stag">automação</span>
-          </div>
+          <div class="stack-tags"><span class="stag">lógica</span><span class="stag">OOP</span><span class="stag">automação</span></div>
         </div>
 
         <div class="stack-card">
@@ -136,11 +121,7 @@
           </div>
           <h3 class="stack-name">Claude AI</h3>
           <p class="stack-desc">IA da Anthropic usada como parceira de raciocínio — para depurar código, explorar conceitos e pensar soluções em conjunto.</p>
-          <div class="stack-tags">
-            <span class="stag">debug</span>
-            <span class="stag">raciocínio</span>
-            <span class="stag">Anthropic</span>
-          </div>
+          <div class="stack-tags"><span class="stag">debug</span><span class="stag">raciocínio</span><span class="stag">Anthropic</span></div>
         </div>
 
         <div class="stack-card">
@@ -152,30 +133,22 @@
           </div>
           <h3 class="stack-name">ChatGPT</h3>
           <p class="stack-desc">Assistente da OpenAI utilizado para tirar dúvidas conceituais, entender trechos de código e explorar abordagens alternativas.</p>
-          <div class="stack-tags">
-            <span class="stag">OpenAI</span>
-            <span class="stag">conceitos</span>
-            <span class="stag">pesquisa</span>
-          </div>
+          <div class="stack-tags"><span class="stag">OpenAI</span><span class="stag">conceitos</span><span class="stag">pesquisa</span></div>
         </div>
 
         <div class="stack-card">
           <div class="stack-icon stack-icon--git">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="18" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="6" cy="6"  r="2.5" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="6" cy="18" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="18" cy="6"  r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="6"  cy="6"  r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="6"  cy="18" r="2.5" stroke="currentColor" stroke-width="1.5"/>
               <path d="M6 8.5v7M8.5 6h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
               <path d="M15.8 7.8 8.2 15.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
           <h3 class="stack-name">Git &amp; GitHub</h3>
           <p class="stack-desc">Controle de versão e hospedagem do portfólio. Todo o histórico de alterações e os arquivos dos projetos vivem aqui.</p>
-          <div class="stack-tags">
-            <span class="stag">versionamento</span>
-            <span class="stag">Pages</span>
-            <span class="stag">open source</span>
-          </div>
+          <div class="stack-tags"><span class="stag">versionamento</span><span class="stag">Pages</span><span class="stag">open source</span></div>
         </div>
 
         <div class="stack-card">
@@ -186,11 +159,7 @@
           </div>
           <h3 class="stack-name">VS Code</h3>
           <p class="stack-desc">Editor de código principal — onde a maior parte dos projetos foi escrita, depurada e organizada.</p>
-          <div class="stack-tags">
-            <span class="stag">editor</span>
-            <span class="stag">extensões</span>
-            <span class="stag">terminal</span>
-          </div>
+          <div class="stack-tags"><span class="stag">editor</span><span class="stag">extensões</span><span class="stag">terminal</span></div>
         </div>
 
         <div class="stack-card">
@@ -202,11 +171,7 @@
           </div>
           <h3 class="stack-name">HTML · CSS · JS</h3>
           <p class="stack-desc">Trio responsável por este portfólio — estrutura, visual e interatividade construídos manualmente, sem frameworks.</p>
-          <div class="stack-tags">
-            <span class="stag">web</span>
-            <span class="stag">vanilla</span>
-            <span class="stag">canvas</span>
-          </div>
+          <div class="stack-tags"><span class="stag">web</span><span class="stag">vanilla</span><span class="stag">canvas</span></div>
         </div>
 
       </div>
@@ -219,23 +184,20 @@
   <p><span class="footer-binary">01001000 01101001</span> — feito com <span class="heart">♥</span> e muito café · <span id="year"></span></p>
 </footer>
 
-<!-- ============ MODAL VISUALIZADOR ============ -->
-<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
-  <div class="modal">
+<!-- MODAL VISUALIZADOR DE ARQUIVOS -->
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-header">
       <div class="modal-title-group">
         <span class="modal-badge" id="modalBadge">PDF</span>
-        <h2 class="modal-title" id="modalTitle">arquivo.pdf</h2>
+        <span class="modal-title" id="modalTitle">arquivo</span>
       </div>
-      <div class="modal-controls">
-        <!-- tabs de arquivo aparecem aqui via JS -->
+      <div class="modal-right-controls">
         <div class="modal-file-tabs" id="modalFileTabs"></div>
         <button class="modal-close" id="modalClose" aria-label="Fechar visualizador">✕</button>
       </div>
     </div>
-    <div class="modal-body" id="modalBody">
-      <!-- conteúdo injetado pelo JS -->
-    </div>
+    <div class="modal-body" id="modalBody"></div>
   </div>
 </div>
 
