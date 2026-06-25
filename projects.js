@@ -8,7 +8,7 @@ const PROJECTS = [
     desc: "Primeiro quiz",
     concepts: [],
     files: [
-       { label: "confirmacao_resposta.png",    path: "1confirmacao_resposta_quiz.png" },
+       { label: "confirmacao_resposta.png",    path: "arquivos/1confirmacao_resposta_quiz.png" },
 
     ]
   },
@@ -41,7 +41,7 @@ const PROJECTS = [
     desc: "Exercícios resolvidos em C.",
     concepts: ["condicionais", "programação introdutória"],
     files: [
-          { label: "4pdf.pdf",    path: "4pdf.pdf" }
+          { label: "4pdf.pdf",    path: "arquivos/4pdf.pdf" }
       
     ]
   },
