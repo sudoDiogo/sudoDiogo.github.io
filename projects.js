@@ -143,7 +143,10 @@ const PROJECTS = [
     desc: "Avaliação de códigos gerados por LLM",
     concepts: ["prompt", "python", "funções"],
     files: [
-      
+      { label: "v1.py",       path: "arquivos/v1.yf" },
+      { label: "v2.py",       path: "arquivos/v2.yf" },
+      { label: "v3.py",       path: "arquivos/v3.yf" },
+      { label: "v4.py",       path: "arquivos/v4.yf" }
     ]
   },
   {
@@ -160,33 +163,39 @@ const PROJECTS = [
   },
   {
     id: "p13",
-    title: "Projeto 13",
-    tag: "Semana 13",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["recursão", "pilha de chamadas"],
-    files: []
+    title: "Escolher e entregar 1 dos dois problemas de engenharia propostos",
+    tag: "Resolução de problemas",
+    status: "Completo",
+    tech: ["Python", "Claude AI"],
+    desc: "Escolher o problema a ser resolvido e utilizar uma LLM para gerar o código até estar bom.",
+    concepts: ["controle de LLM", "organização", "lógica"],
+    files: [
+      { label: "13pdf.pdf",       path: "arquivos/13pdf.pdf" }
+    ]
   },
   {
     id: "p14",
-    title: "Projeto 14",
-    tag: "Semana 14",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["algoritmos de busca", "ordenação"],
-    files: []
+    title: "Entregar o outro dos dois problemas de engenharia propostos da aula passada",
+    tag: "Resolução de problemas",
+    status: "Completo",
+    tech: ["Python", "Claude AI"],
+    desc: "Escolher o outro problema e utilizar uma LLM para gerar outro código.",
+    concepts: ["algoritmos", "engenharia de prompt"],
+    files: [
+       { label: "14pdf.pdf",       path: "arquivos/14pdf.pdf" }
+    ]
   },
   {
     id: "p15",
-    title: "Projeto 15",
-    tag: "Semana 15",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["estruturas de dados", "pilha", "fila"],
-    files: []
+    title: "Escolher e resolver um problema de engenharia",
+    tag: "Resolução de problemas",
+    status: "completp",
+    tech: ["Python", "IDE"],
+    desc: "Resolver um problema de engenharia utilizando LLM.",
+    concepts: ["estruturas de dados", "lógica", "criatividade"],
+    files: [
+      
+    ]
   },
   {
     id: "p16",
