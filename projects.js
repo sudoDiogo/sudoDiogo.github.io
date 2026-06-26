@@ -194,7 +194,12 @@ const PROJECTS = [
     desc: "Resolver um problema de engenharia utilizando LLM.",
     concepts: ["estruturas de dados", "lógica", "criatividade"],
     files: [
-      
+      { label: "medicina_tatica.py",       path: "arquivos/medicina_tatica.py" },
+      { label: "MedicinaTática_DiogoFreitas_ET01.pdf",       path: "arquivos/MedicinaTática_DiogoFreitas_ET01.pdf" },
+      { label: "planejamento_missao.png",       path: "arquivos/planejamento_missao.png" },
+      { label: "home_software.png",       path: "arquivos/home_software.png" },
+      { label: "aba_equipamentos.png",       path: "arquivos/aba_equipamentos.png" },
+      { label: "equipamentos_filtrados.png",       path: "arquivos/equipamentos_filtrados.png" },
     ]
   },
   {
