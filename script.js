@@ -130,6 +130,10 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
       <path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
       <path d="M10 1v3h3M5 7l2.5 2L5 11M9 11h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>`;
+    if (type === 'txt') return `<svg viewBox="0 0 16 16" fill="none" width="13" height="13">
+      <path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+      <path d="M10 1v3h3M5 7h6M5 10h6M5 13h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    </svg>`;
     return `<svg viewBox="0 0 16 16" fill="none" width="13" height="13">
       <path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
       <path d="M10 1v3h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
@@ -138,7 +142,7 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
 
   function fileType(path) {
     const ext = (path || '').split('.').pop().toLowerCase();
-    return ext === 'pdf' ? 'pdf' : ext === 'py' ? 'py' : ext === 'png' || ext === 'jpg' || ext === 'jpeg' ? 'img' : 'other';
+    return ext === 'pdf' ? 'pdf' : ext === 'py' ? 'py' : ext === 'txt' ? 'txt' : ext === 'png' || ext === 'jpg' || ext === 'jpeg' ? 'img' : 'other';
   }
 
   grid.innerHTML = '';
@@ -241,6 +245,7 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
     const ext = (path || '').split('.').pop().toLowerCase();
     if (ext === 'pdf') return 'pdf';
     if (ext === 'py')  return 'py';
+    if (ext === 'txt') return 'txt';
     if (['png','jpg','jpeg','gif','webp'].includes(ext)) return 'img';
     return 'other';
   }
@@ -330,6 +335,47 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
           bodyEl.innerHTML = `<div class="viewer-error">
             <p class="terminal-line">$ erro: ${err.message}</p>
             <p style="margin-top:.8rem;color:var(--text-secondary)">
+              Verifique se <code>${file.path}</code> está na pasta <code>arquivos/</code> do repositório.
+            </p>
+          </div>`;
+        });
+
+    } else if (type === 'txt') {
+      bodyEl.innerHTML = `<div class="viewer-loading"><span class="terminal-line">$ carregando ${file.label}…</span></div>`;
+
+      fetch(file.path)
+        .then(r => {
+          if (!r.ok) throw new Error('HTTP ' + r.status + ' — arquivo não encontrado');
+          return r.text();
+        })
+        .then(text => {
+          bodyEl.innerHTML = '';
+          const wrap = document.createElement('div');
+          wrap.className = 'viewer-py-wrap'; // reusa o mesmo layout do .py
+
+          wrap.innerHTML = `
+            <div class="py-bar">
+              <span class="wdot wdot-r"></span>
+              <span class="wdot wdot-y"></span>
+              <span class="wdot wdot-g"></span>
+              <span class="py-bar-name">${file.label}</span>
+              <span class="py-bar-lang">Texto</span>
+            </div>`;
+
+          const pre = document.createElement('pre');
+          pre.className = 'py-pre';
+          const codeEl = document.createElement('code');
+          codeEl.className = 'py-code';
+          codeEl.style.color = 'var(--text-1)'; // sem syntax highlight — texto puro
+          codeEl.textContent = text;
+          pre.appendChild(codeEl);
+          wrap.appendChild(pre);
+          bodyEl.appendChild(wrap);
+        })
+        .catch(err => {
+          bodyEl.innerHTML = `<div class="viewer-error">
+            <p class="terminal-line">$ erro: ${err.message}</p>
+            <p style="margin-top:.8rem;color:var(--text-2)">
               Verifique se <code>${file.path}</code> está na pasta <code>arquivos/</code> do repositório.
             </p>
           </div>`;
