@@ -9,7 +9,7 @@ const PROJECTS = [
     desc: "Resposta do primeiro formulário diagnóstico da disciplina",
     concepts: ["programação básica", "Introdução"],
     files: [
-       { label: "print.pdf",       path: "arquivos/1confirmacao_resposta_quiz.png" }
+       { label: "print.png",       path: "arquivos/1confirmacao_resposta_quiz.png" }
     ]
   },
   {
@@ -74,32 +74,36 @@ const PROJECTS = [
   },
   {
     id: "p07",
-    title: "Projeto 07",
-    tag: "Semana 07",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["strings", "métodos de string", "formatação"],
-    files: []
+    title: "Quiz de Avaliação da Atividade Anterior",
+    tag: "Quiz/formulário",
+    status: "Completo",
+    tech: ["Google forms"],
+    desc: "Quiz de opinião da atividade de geração de algoritmos.",
+    concepts: ["avaliação", "LLM"],
+    files: [
+      { label: "7.txt",       path: "arquivos/7.txt" }
+    ]
   },
   {
     id: "p08",
-    title: "Projeto 08",
-    tag: "Semana 08",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["arquivos", "leitura", "escrita"],
-    files: []
+    title: "Resolver os 5 exercícios em papel",
+    tag: "Lista/papel",
+    status: "Completo",
+    tech: ["Papel e caneta"],
+    desc: "Resolver os pseudocódigos em papel e caneta..",
+    concepts: ["lógica", "estrutura", "resolução de problemas"],
+    files: [
+      { label: "8pdf.pdf",       path: "arquivos/8pdf.pdf" }
+    ]
   },
   {
     id: "p09",
-    title: "Projeto 09",
-    tag: "Semana 09",
-    status: "em breve",
+    title: "Resolver os exercícios de listas/vetores/arrays em Python",
+    tag: "Vetores Python",
+    status: "Completo",
     tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["exceções", "try/except", "erros"],
+    desc: "Lista de exercícios sobre vetores.",
+    concepts: ["Listas", "arrays", "lógica"],
     files: []
   },
   {
