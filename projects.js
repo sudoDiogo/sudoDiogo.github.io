@@ -226,27 +226,27 @@ const PROJECTS = [
   {
     id: "p17",
     title: "Escreva um breve relato sincero sobre as entrevistas",
-    tag: "Semana 17",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["APIs", "requests", "JSON"],
+    tag: "Feedback de exercícios",
+    status: "Completo",
+    tech: ["Google meet"],
+    desc: "Entrevista sobre exercícios de pseudocódigo",
+    concepts: ["entrevista", "lógica"],
     files: []
   },
   {
     id: "p18",
     title: "Modularização de Código e Avaliação de LLMs",
-    tag: "Semana 18",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["banco de dados", "SQLite", "queries"],
+    tag: "Resolução de problemas e modularização",
+    status: "Completo",
+    tech: ["Python", "Claude AI"],
+    desc: "Desenvolvimento de uma  solução para um problema de monitoramento de grandezas de engenharia utilizando conceitos de modularização de código.",
+    concepts: ["resolução de problemas", "programação", "prompt"],
     files: []
   },
 
   {
     id: "p19",
-    title: "Modularização de Código e Avaliação de LLMs",
+    title: "Avaliar criticamente o site alegrete.org",
     tag: "Semana 18",
     status: "em breve",
     tech: ["Python"],
@@ -257,7 +257,7 @@ const PROJECTS = [
 
   {
     id: "p20",
-    title: "Modularização de Código e Avaliação de LLMs",
+    title: "Desenvolvimento Assistido por IA para o Portal Alegrete.org",
     tag: "Semana 18",
     status: "em breve",
     tech: ["Python"],
@@ -268,7 +268,7 @@ const PROJECTS = [
 
   {
     id: "p21",
-    title: "Modularização de Código e Avaliação de LLMs",
+    title: "Postar o link e um print do seu site .github.io",
     tag: "Semana 18",
     status: "em breve",
     tech: ["Python"],
