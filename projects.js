@@ -136,23 +136,27 @@ const PROJECTS = [
   },
   {
     id: "p11",
-    title: "Projeto 11",
-    tag: "Semana 11",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["OOP", "classes", "objetos"],
-    files: []
+    title: "Gerar as diferentes versões do código até ter resultados visuais interessantes e consistentes",
+    tag: "Geração de código",
+    status: "Completo",
+    tech: ["Python", "Claude AI"],
+    desc: "Avaliação de códigos gerados por LLM",
+    concepts: ["prompt", "python", "funções"],
+    files: [
+      
+    ]
   },
   {
     id: "p12",
-    title: "Projeto 12",
-    tag: "Semana 12",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["herança", "polimorfismo", "encapsulamento"],
-    files: []
+    title: "Problemas de outras disciplinas – resolução em múltiplas abordagens",
+    tag: "Resolução de problemas",
+    status: "Completo",
+    tech: ["Python", "Lógica"],
+    desc: "Resolver como múltiplas abordagens problemas de outras disciplinas que requerem lógica",
+    concepts: ["pseudocódigo", "lógica", "programação"],
+    files: [
+      { label: "12pdf.pdf",       path: "arquivos/12pdf.pdf" }
+    ]
   },
   {
     id: "p13",
