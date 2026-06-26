@@ -104,17 +104,35 @@ const PROJECTS = [
     tech: ["Python"],
     desc: "Lista de exercícios sobre vetores.",
     concepts: ["Listas", "arrays", "lógica"],
-    files: []
+    files: [
+      { label: "1vetor.py",       path: "arquivos/1vetor.py" },
+      { label: "2vetor.py",       path: "arquivos/2vetor.py" },
+      { label: "3vetor.py",       path: "arquivos/3vetor.py" },
+      { label: "4vetor.py",       path: "arquivos/4vetor.py" },
+      { label: "5vetor.py",       path: "arquivos/5vetor.py" },
+      { label: "6vetor.py",       path: "arquivos/6vetor.py" },
+      { label: "7vetor.py",       path: "arquivos/7vetor.py" },
+      { label: "8vetor.py",       path: "arquivos/8vetor.py" },
+      { label: "9vetor.py",       path: "arquivos/9vetor.py" },
+      { label: "10vetor.py",       path: "arquivos/10vetor.py" },
+      { label: "11vetor.py",       path: "arquivos/11vetor.py" },
+      { label: "12vetor.py",       path: "arquivos/12vetor.py" },
+      { label: "13vetor.py",       path: "arquivos/13vetor.py" },
+      { label: "14vetor.py",       path: "arquivos/14vetor.py" },
+      { label: "15vetor.py",       path: "arquivos/15vetor.py" }
+    ]
   },
   {
     id: "p10",
-    title: "Projeto 10",
-    tag: "Semana 10",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["módulos", "importação", "bibliotecas padrão"],
-    files: []
+    title: "Formulação e Resolução de Problemas com Vetores/Listas usando LLMs",
+    tag: "Resolução com LLM",
+    status: "Completo",
+    tech: ["Claude AI"],
+    desc: "Gerar exercícios com LLM e resolver.",
+    concepts: ["engenharia de prompt", "organização", "pseudocódigo"],
+    files: [
+      { label: "10pdf.pdf",       path: "arquivos/10pdf.pdf" }
+    ]
   },
   {
     id: "p11",
