@@ -204,17 +204,28 @@ const PROJECTS = [
   },
   {
     id: "p16",
-    title: "Projeto 16",
-    tag: "Semana 16",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["expressões regulares", "regex"],
-    files: []
+    title: "Evolução técnica da solução desenvolvida na atividade anterior",
+    tag: "Evolução de código",
+    status: "Completo",
+    tech: ["Python", "Claude AI"],
+    desc: "Melhorias da atividade anterior",
+    concepts: ["funções", "bibliotecas", "recursividade"],
+    files: [
+      { label: "carregamento.png", path: "arquivos/carregamento.png" },
+      { label: "drones3d.png", path: "arquivos/drones3d.png" },
+      { label: "equipamentos.png", path: "arquivos/equipamentos.png" },
+      { label: "home.png", path: "arquivos/home.png" },
+      { label: "medicina_tatica.py", path: "arquivos/medicina_tatica.py" },
+      { label: "melhoriasMedicinaTatica_DiogoET01.pdf", path: "arquivos/melhoriasMedicinaTatica_DiogoET01.pdf" },
+      { label: "orbita.png", path: "arquivos/orbita.png" },
+      { label: "planejamento_missao.png", path: "arquivos/planejamento_missao.png" },
+      { label: "planejamento_missao2.png", path: "arquivos/planejamento_missao2.png" },
+      { label: "situacao_atual.png", path: "arquivos/situacao_atual.png" }
+    ]
   },
   {
     id: "p17",
-    title: "Projeto 17",
+    title: "Escreva um breve relato sincero sobre as entrevistas",
     tag: "Semana 17",
     status: "em breve",
     tech: ["Python"],
@@ -224,7 +235,7 @@ const PROJECTS = [
   },
   {
     id: "p18",
-    title: "Projeto 18",
+    title: "Modularização de Código e Avaliação de LLMs",
     tag: "Semana 18",
     status: "em breve",
     tech: ["Python"],
@@ -232,8 +243,42 @@ const PROJECTS = [
     concepts: ["banco de dados", "SQLite", "queries"],
     files: []
   },
+
   {
     id: "p19",
+    title: "Modularização de Código e Avaliação de LLMs",
+    tag: "Semana 18",
+    status: "em breve",
+    tech: ["Python"],
+    desc: "Descrição breve do que foi desenvolvido neste projeto.",
+    concepts: ["banco de dados", "SQLite", "queries"],
+    files: []
+  },
+
+  {
+    id: "p20",
+    title: "Modularização de Código e Avaliação de LLMs",
+    tag: "Semana 18",
+    status: "em breve",
+    tech: ["Python"],
+    desc: "Descrição breve do que foi desenvolvido neste projeto.",
+    concepts: ["banco de dados", "SQLite", "queries"],
+    files: []
+  },
+
+  {
+    id: "p21",
+    title: "Modularização de Código e Avaliação de LLMs",
+    tag: "Semana 18",
+    status: "em breve",
+    tech: ["Python"],
+    desc: "Descrição breve do que foi desenvolvido neste projeto.",
+    concepts: ["banco de dados", "SQLite", "queries"],
+    files: []
+  },
+  
+  {
+    id: "p22",
     title: "Projeto Final",
     tag: "Projeto Final",
     status: "em breve",
