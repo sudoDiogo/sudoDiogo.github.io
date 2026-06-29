@@ -247,7 +247,7 @@ const PROJECTS = [
       { label: "claude_analisador_sinais.py", path: "arquivos/claude_analisador_sinais.py" },
       { label: "gpt_analisador_sinais.py", path: "arquivos/gpt_analisador_sinais.py" },
       { label: "gpt_gerador_medicoes.py", path: "arquivos/gpt_gerador_medicoes.py" },
-      { label: "modularizacao_DiogoET01.pdf", path: "arquivos/modularizacao_DiogoET01.pdf" 
+      { label: "modularizacao_DiogoET01.pdf", path: "arquivos/modularizacao_DiogoET01.pdf"} 
     ]
   },
 
