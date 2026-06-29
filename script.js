@@ -56,29 +56,24 @@
 })();
 
 /* ==============================================
-   ACTIVE NAV ON SCROLL
+   ACTIVE NAV ON SCROLL  (corrigido)
    ============================================== */
 (function () {
   const sections = document.querySelectorAll('main section[id]');
-  const navLinks  = document.querySelectorAll('.nav-link');
+  const navLinks = document.querySelectorAll('.nav-link');
   if (!sections.length) return;
 
-  new IntersectionObserver(entries => {
+  const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        const id = e.target.id;
-        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+        navLinks.forEach(l =>
+          l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id)
+        );
       }
     });
-  }, { rootMargin: '-45% 0px -45% 0px' }).observe(
-    // observe all sections
-    ...[...sections].map(s => (new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting)
-          navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
-      });
-    }, { rootMargin: '-45% 0px -45% 0px' }).observe(s), s))
-  );
+  }, { rootMargin: '-45% 0px -45% 0px' });
+
+  sections.forEach(s => obs.observe(s));
 })();
 
 /* ==============================================
@@ -90,11 +85,14 @@
 })();
 
 /* ==============================================
-   SCROLL REVEAL (applied after cards render too)
+   SCROLL REVEAL
    ============================================== */
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('is-visible'); revealObs.unobserve(e.target); }
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      revealObs.unobserve(e.target);
+    }
   });
 }, { threshold: 0.08 });
 
@@ -102,7 +100,7 @@ function enableReveal(root) {
   root.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 }
 
-document.querySelectorAll('.section-head, .stack-card').forEach(el => {
+document.querySelectorAll('.section-head, .stack-card, .destaque-card').forEach(el => {
   el.classList.add('reveal');
   revealObs.observe(el);
 });
@@ -114,7 +112,6 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
   const grid = document.getElementById('projects-grid');
   if (!grid || typeof PROJECTS === 'undefined') return;
 
-  // small inline SVGs
   const ICON_PROJECT = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
@@ -142,20 +139,23 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
 
   function fileType(path) {
     const ext = (path || '').split('.').pop().toLowerCase();
-    return ext === 'pdf' ? 'pdf' : ext === 'py' ? 'py' : ext === 'txt' ? 'txt' : ext === 'png' || ext === 'jpg' || ext === 'jpeg' ? 'img' : 'other';
+    if (ext === 'pdf') return 'pdf';
+    if (ext === 'py')  return 'py';
+    if (ext === 'txt') return 'txt';
+    if (['png','jpg','jpeg','gif','webp'].includes(ext)) return 'img';
+    return 'other';
   }
 
   grid.innerHTML = '';
 
   PROJECTS.forEach((proj, pidx) => {
     const hasFiles = proj.files && proj.files.length > 0;
-    const done = proj.status === 'concluído';
+    const done = proj.status === 'Completo';
 
     const card = document.createElement('article');
     card.className = 'project-card reveal';
     card.dataset.pidx = pidx;
 
-    // build file chips html
     let filesHTML = '';
     if (hasFiles) {
       const chips = proj.files.map((f, fidx) => {
@@ -167,7 +167,6 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
       filesHTML = `<div class="card-files"><p class="card-files-label">arquivos</p><div class="card-chip-row">${chips}</div></div>`;
     }
 
-    // concepts
     const tagsHTML = (proj.concepts || []).map(c => `<span class="concept-tag">${c}</span>`).join('');
 
     card.innerHTML = `
@@ -196,10 +195,7 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
     grid.appendChild(card);
   });
 
-  // store globally so modal can access
   window._PROJECTS = PROJECTS;
-
-  // kick off reveal for newly created cards
   enableReveal(grid);
 })();
 
@@ -216,10 +212,9 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
 
   if (!overlay || !closeBtn) return;
 
-  let _proj  = null;
-  let _fidx  = 0;
+  let _proj = null;
+  let _fidx = 0;
 
-  /* ---------- open / close ---------- */
   function openModal(pidx, fidx) {
     const projects = window._PROJECTS;
     if (!projects || !projects[pidx]) return;
@@ -228,19 +223,17 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
     render();
     overlay.classList.add('is-open');
     overlay.setAttribute('aria-hidden', 'false');
-    document.documentElement.style.overflow = 'hidden'; // lock scroll on <html>
+    document.documentElement.style.overflow = 'hidden';
     closeBtn.focus();
   }
 
   function closeModal() {
     overlay.classList.remove('is-open');
     overlay.setAttribute('aria-hidden', 'true');
-    document.documentElement.style.overflow = ''; // restore scroll
-    // wipe content so iframe stops loading
+    document.documentElement.style.overflow = '';
     setTimeout(() => { bodyEl.innerHTML = ''; tabsEl.innerHTML = ''; }, 300);
   }
 
-  /* ---------- file type ---------- */
   function ftype(path) {
     const ext = (path || '').split('.').pop().toLowerCase();
     if (ext === 'pdf') return 'pdf';
@@ -250,18 +243,15 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
     return 'other';
   }
 
-  /* ---------- render ---------- */
   function render() {
     const file = _proj.files[_fidx];
     if (!file) return;
     const type = ftype(file.path);
 
-    // badge
     badgeEl.textContent = type.toUpperCase();
     badgeEl.className   = 'modal-badge modal-badge--' + type;
     titleEl.textContent = file.label;
 
-    // tabs (only if multiple files)
     tabsEl.innerHTML = _proj.files.length > 1
       ? _proj.files.map((f, i) =>
           `<button class="modal-tab ${i === _fidx ? 'is-active' : ''}" data-fidx="${i}" type="button">${f.label}</button>`
@@ -272,14 +262,11 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
       btn.addEventListener('click', () => { _fidx = +btn.dataset.fidx; render(); });
     });
 
-    // body content
     bodyEl.innerHTML = '';
 
     if (type === 'pdf') {
-      // embed PDF — works on GitHub Pages (same origin)
       const wrap = document.createElement('div');
       wrap.className = 'viewer-pdf-wrap';
-
       const iframe = document.createElement('iframe');
       iframe.src   = file.path;
       iframe.title = file.label;
@@ -297,76 +284,53 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
       bodyEl.appendChild(wrap);
 
     } else if (type === 'py') {
-      // fetch .py and render with highlight
       bodyEl.innerHTML = `<div class="viewer-loading"><span class="terminal-line">$ carregando ${file.label}…</span></div>`;
-
       fetch(file.path)
-        .then(r => {
-          if (!r.ok) throw new Error('HTTP ' + r.status + ' — arquivo não encontrado');
-          return r.text();
-        })
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
         .then(code => {
           bodyEl.innerHTML = '';
           const wrap = document.createElement('div');
           wrap.className = 'viewer-py-wrap';
-
-          // fake window bar
-          wrap.innerHTML = `
-            <div class="py-bar">
-              <span class="wdot wdot-r"></span>
-              <span class="wdot wdot-y"></span>
-              <span class="wdot wdot-g"></span>
-              <span class="py-bar-name">${file.label}</span>
-              <span class="py-bar-lang">Python</span>
-            </div>`;
-
-          const pre  = document.createElement('pre');
+          wrap.innerHTML = `<div class="py-bar">
+            <span class="wdot wdot-r"></span><span class="wdot wdot-y"></span><span class="wdot wdot-g"></span>
+            <span class="py-bar-name">${file.label}</span>
+            <span class="py-bar-lang">Python</span>
+          </div>`;
+          const pre = document.createElement('pre');
           pre.className = 'py-pre';
-          const code_el = document.createElement('code');
-          code_el.className = 'py-code';
-          // set as text first, then highlight
-          code_el.textContent = code;
-          pre.appendChild(code_el);
+          const codeEl = document.createElement('code');
+          codeEl.className = 'py-code';
+          codeEl.textContent = code;
+          pre.appendChild(codeEl);
           wrap.appendChild(pre);
           bodyEl.appendChild(wrap);
-          highlightPy(code_el);
+          highlightPy(codeEl);
         })
         .catch(err => {
           bodyEl.innerHTML = `<div class="viewer-error">
             <p class="terminal-line">$ erro: ${err.message}</p>
-            <p style="margin-top:.8rem;color:var(--text-secondary)">
-              Verifique se <code>${file.path}</code> está na pasta <code>arquivos/</code> do repositório.
-            </p>
+            <p style="margin-top:.8rem">Verifique se <code>${file.path}</code> está na pasta <code>arquivos/</code>.</p>
           </div>`;
         });
 
     } else if (type === 'txt') {
       bodyEl.innerHTML = `<div class="viewer-loading"><span class="terminal-line">$ carregando ${file.label}…</span></div>`;
-
       fetch(file.path)
-        .then(r => {
-          if (!r.ok) throw new Error('HTTP ' + r.status + ' — arquivo não encontrado');
-          return r.text();
-        })
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
         .then(text => {
           bodyEl.innerHTML = '';
           const wrap = document.createElement('div');
-          wrap.className = 'viewer-py-wrap'; // reusa o mesmo layout do .py
-
-          wrap.innerHTML = `
-            <div class="py-bar">
-              <span class="wdot wdot-r"></span>
-              <span class="wdot wdot-y"></span>
-              <span class="wdot wdot-g"></span>
-              <span class="py-bar-name">${file.label}</span>
-              <span class="py-bar-lang">Texto</span>
-            </div>`;
-
+          wrap.className = 'viewer-py-wrap';
+          wrap.innerHTML = `<div class="py-bar">
+            <span class="wdot wdot-r"></span><span class="wdot wdot-y"></span><span class="wdot wdot-g"></span>
+            <span class="py-bar-name">${file.label}</span>
+            <span class="py-bar-lang">Texto</span>
+          </div>`;
           const pre = document.createElement('pre');
           pre.className = 'py-pre';
           const codeEl = document.createElement('code');
           codeEl.className = 'py-code';
-          codeEl.style.color = 'var(--text-1)'; // sem syntax highlight — texto puro
+          codeEl.style.color = 'var(--text-1)';
           codeEl.textContent = text;
           pre.appendChild(codeEl);
           wrap.appendChild(pre);
@@ -375,15 +339,13 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
         .catch(err => {
           bodyEl.innerHTML = `<div class="viewer-error">
             <p class="terminal-line">$ erro: ${err.message}</p>
-            <p style="margin-top:.8rem;color:var(--text-2)">
-              Verifique se <code>${file.path}</code> está na pasta <code>arquivos/</code> do repositório.
-            </p>
+            <p style="margin-top:.8rem">Verifique se <code>${file.path}</code> está na pasta <code>arquivos/</code>.</p>
           </div>`;
         });
 
     } else {
       bodyEl.innerHTML = `<div class="viewer-error">
-        <p>Tipo de arquivo não suportado para visualização.</p>
+        <p>Tipo de arquivo não suportado para visualização inline.</p>
         <a href="${file.path}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="margin-top:1rem;display:inline-flex">
           Abrir em nova aba ↗
         </a>
@@ -391,56 +353,31 @@ document.querySelectorAll('.section-head, .stack-card').forEach(el => {
     }
   }
 
-  /* ---------- minimal Python syntax highlight ---------- */
   function highlightPy(el) {
     const KW = ['False','None','True','and','as','assert','async','await','break',
       'class','continue','def','del','elif','else','except','finally','for','from',
       'global','if','import','in','is','lambda','nonlocal','not','or','pass',
       'raise','return','try','while','with','yield','self','print','input','len',
       'range','type','int','str','float','list','dict','set','tuple','bool'];
-
-    // work on raw text, build highlighted HTML
-    let src = el.textContent;
-    // We'll do a simple line-by-line pass to be safe
-    const lines = src.split('\n');
+    const lines = el.textContent.split('\n');
     const out = lines.map(line => {
-      // escape HTML entities
       let s = line.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-
-      // triple-quoted strings are not handled here (keep simple)
-      // single-line strings  "…" or '…'
       s = s.replace(/("""[\s\S]*?"""|'''[\s\S]*?'''|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g,
         m => `<span class="py-str">${m}</span>`);
-
-      // comment (only if not inside a string span already — simple heuristic: after first #)
       s = s.replace(/(#.*)$/, m => `<span class="py-cmt">${m}</span>`);
-
-      // numbers
       s = s.replace(/\b(\d+\.?\d*)\b/g, m => `<span class="py-num">${m}</span>`);
-
-      // keywords — skip inside already-tagged spans
       KW.forEach(kw => {
-        s = s.replace(
-          new RegExp('(?<!<[^>]{0,200})\\b(' + kw + ')\\b(?![^<]*>)','g'),
-          `<span class="py-kw">$1</span>`
-        );
+        s = s.replace(new RegExp('(?<!<[^>]{0,200})\\b(' + kw + ')\\b(?![^<]*>)','g'),
+          `<span class="py-kw">$1</span>`);
       });
-
       return s;
     });
     el.innerHTML = out.join('\n');
   }
 
-  /* ---------- event wiring ---------- */
-
-  // clicks on file chips (delegated — chips are created dynamically)
   document.addEventListener('click', e => {
     const chip = e.target.closest('.file-chip');
-    if (chip) {
-      openModal(+chip.dataset.pidx, +chip.dataset.fidx);
-      return;
-    }
-    // click on overlay backdrop closes modal
+    if (chip) { openModal(+chip.dataset.pidx, +chip.dataset.fidx); return; }
     if (e.target === overlay) closeModal();
   });
 
