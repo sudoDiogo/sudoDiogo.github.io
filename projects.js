@@ -241,7 +241,14 @@ const PROJECTS = [
     tech: ["Python", "Claude AI"],
     desc: "Desenvolvimento de uma  solução para um problema de monitoramento de grandezas de engenharia utilizando conceitos de modularização de código.",
     concepts: ["resolução de problemas", "programação", "prompt"],
-    files: []
+    files: [
+      { label: "claude_analisador_sinais.py", path: "arquivos/claude_analisador_sinais.py" },
+      { label: "claude_gerador_medicoes.py", path: "arquivos/claude_gerador_medicoes.py" },
+      { label: "claude_analisador_sinais.py", path: "arquivos/claude_analisador_sinais.py" },
+      { label: "gpt_analisador_sinais.py", path: "arquivos/gpt_analisador_sinais.py" },
+      { label: "gpt_gerador_medicoes.py", path: "arquivos/gpt_gerador_medicoes.py" },
+      { label: "modularizacao_DiogoET01.pdf", path: "arquivos/modularizacao_DiogoET01.pdf" 
+    ]
   },
 
   {
@@ -263,7 +270,12 @@ const PROJECTS = [
     tech: ["Python"],
     desc: "Descrição breve do que foi desenvolvido neste projeto.",
     concepts: ["banco de dados", "SQLite", "queries"],
-    files: []
+    files: [
+      { label: "GaleriaAlegretense_DiogoET01.pdf", path: "arquivos/GaleriaAlegretense_DiogoET01.pdf" },
+      { label: "galeria_alegretense.py", path: "arquivos/galeria_alegretense.py" },
+      { label: "categorias.py", path: "arquivos/categorias.py" },
+      { label: "provedores.py", path: "arquivos/provedores.py" }
+    ]
   },
 
   {
@@ -274,7 +286,10 @@ const PROJECTS = [
     tech: ["Python"],
     desc: "Descrição breve do que foi desenvolvido neste projeto.",
     concepts: ["banco de dados", "SQLite", "queries"],
-    files: []
+    files: [
+      { label: "print_inicial.png", path: "arquivos/print_inicial.png" },
+      { label: "link.txt", path: "arquivos/link.txt" }
+    ]
   },
   
   {
