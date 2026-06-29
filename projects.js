@@ -256,11 +256,11 @@ const PROJECTS = [
   {
     id: "p19",
     title: "Avaliar criticamente o site alegrete.org",
-    tag: "Semana 18",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["banco de dados", "SQLite", "queries"],
+    tag: "Quiz/formulário",
+    status: "Completo",
+    tech: [".txt"],
+    desc: "Avaliação do site alegrete.org",
+    concepts: ["web dev", "opinião"],
     files: [
       { label: "avaliacao_alegrete.txt", path: "arquivos/avaliacao_alegrete.txt"} 
     ]
@@ -269,11 +269,11 @@ const PROJECTS = [
   {
     id: "p20",
     title: "Desenvolvimento Assistido por IA para o Portal Alegrete.org",
-    tag: "Semana 18",
-    status: "em breve",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["banco de dados", "SQLite", "queries"],
+    tag: "Geração por LLM",
+    status: "Completo",
+    tech: ["Python", "Claude AI", "Chat GPT"],
+    desc: "Utilização de LLM's para o desenvolvimento de um software que faça web crawling de imagens para o portal alegrete.org ",
+    concepts: ["web crawling", "python", "bibliotecas", "web dev", "requisições"],
     files: [
       { label: "GaleriaAlegretense_DiogoET01.pdf", path: "arquivos/GaleriaAlegretense_DiogoET01.pdf" },
       { label: "galeria_alegretense.py", path: "arquivos/galeria_alegretense.py" },
@@ -287,9 +287,9 @@ const PROJECTS = [
     title: "Postar o link e um print do seu site .github.io",
     tag: "Github.io",
     status: "Completo",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["banco de dados", "SQLite", "queries"],
+    tech: ["Github"],
+    desc: "Print e link do site.",
+    concepts: [".txt",".png"],
     files: [
       { label: "print_inicial.png", path: "arquivos/print_inicial.png" },
       { label: "link.txt", path: "arquivos/link.txt" }
@@ -301,9 +301,9 @@ const PROJECTS = [
     title: "Projeto Final da Disciplina: Portfólio de Entregas no GitHub.io (Versão 1)",
     tag: "Github.io",
     status: "Completo",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["banco de dados", "SQLite", "queries"],
+    tech: ["HTML", "Javascript", "Claude AI", "Chat GPT"],
+    desc: "Link e print de uma das primeiras versões do site",
+    concepts: ["web dev", "geração com LLM"],
     files: [
       { label: "print_site.png", path: "arquivos/print_site.png" },
       { label: "link.txt", path: "arquivos/link.txt" }
@@ -315,9 +315,9 @@ const PROJECTS = [
     title: "Atividade em Aula: Portfólio no GitHub.io – Versão 26.03.2026",
     tag: "Github.io",
     status: "Completo",
-    tech: ["Python"],
-    desc: "Descrição breve do que foi desenvolvido neste projeto.",
-    concepts: ["banco de dados", "SQLite", "queries"],
+    tech: ["Claude AI", "Javascript"],
+    desc: "Continuação do desenvolvimento do site portfólio.",
+    concepts: ["engenharia de prompt", "web dev"],
     files: [
       { label: "resumo26.06.2026.txt", path: "arquivos/resumo26.06.2026.txt" },
       { label: "link.txt", path: "arquivos/link.txt" }
@@ -332,6 +332,16 @@ const PROJECTS = [
     tech: ["Python", "Claude AI"],
     desc: "Projeto integrador do semestre, reunindo os conceitos trabalhados ao longo das aulas.",
     concepts: ["integração", "projeto completo", "boas práticas"],
-    files: []
+    files: [
+      { label: "relatorioFinal_DiogoET01.pdf", path: "arquivos/relatorioFinal_DiogoET01.pdf" },
+      { label: "print_final.png", path: "arquivos/print_final.pdf" },
+      { label: "hash_final.txt", path: "arquivos/hash_final.txt" }
+    ]
   }
 ];
+
+
+
+
+
+
