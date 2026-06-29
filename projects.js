@@ -143,10 +143,10 @@ const PROJECTS = [
     desc: "Avaliação de códigos gerados por LLM",
     concepts: ["prompt", "python", "funções"],
     files: [
-      { label: "v1.py",       path: "arquivos/v1.yf" },
-      { label: "v2.py",       path: "arquivos/v2.yf" },
-      { label: "v3.py",       path: "arquivos/v3.yf" },
-      { label: "v4.py",       path: "arquivos/v4.yf" }
+      { label: "v1.py",       path: "arquivos/v1.py" },
+      { label: "v2.py",       path: "arquivos/v2.py" },
+      { label: "v3.py",       path: "arquivos/v3.py" },
+      { label: "v4.py",       path: "arquivos/v4.py" }
     ]
   },
   {
