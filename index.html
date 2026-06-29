@@ -80,67 +80,108 @@
   <div class="formulas-strip" aria-label="Fórmulas de Engenharia de Telecomunicações">
     <div class="formulas-inner">
 
+      <!-- SAR 2D-FFT -->
       <div class="formula-card">
         <span class="formula-chip">SAR · 2D-FFT</span>
         <div class="formula-body">
-          <span class="fm">S(k</span><span class="fm-sub">r</span><span class="fm">,k</span><span class="fm-sub">a</span><span class="fm">)</span>
-          <span class="fm fm-op">=</span>
-          <span class="fm fm-op">∬</span>
-          <span class="fm">s(t,η)</span>
-          <span class="fm">e</span><span class="fm-sup">−j(k<span class="fm-subsup">r</span>t + k<span class="fm-subsup">a</span>η)</span>
-          <span class="fm fm-op"> dt dη</span>
+          <svg viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg" class="fml-svg">
+            <!-- S(kr, ka) = -->
+            <text x="0" y="46" class="fml" font-style="italic">S(k</text>
+            <text x="46" y="52" class="fml fml-small fml-green">r</text>
+            <text x="54" y="46" class="fml" font-style="italic">,k</text>
+            <text x="74" y="52" class="fml fml-small fml-green">a</text>
+            <text x="82" y="46" class="fml" font-style="italic">)</text>
+            <text x="96" y="46" class="fml fml-cyan">=</text>
+            <!-- double integral -->
+            <text x="114" y="50" class="fml fml-large fml-cyan">∬</text>
+            <!-- s(t,η) -->
+            <text x="140" y="46" class="fml" font-style="italic">s(t,η)</text>
+            <!-- e -->
+            <text x="200" y="46" class="fml" font-style="italic">e</text>
+            <!-- exponent: −j(kr t + ka η) -->
+            <text x="212" y="30" class="fml fml-small">−j(k</text>
+            <text x="244" y="34" class="fml fml-xsmall fml-green">r</text>
+            <text x="250" y="30" class="fml fml-small">t + k</text>
+            <text x="284" y="34" class="fml fml-xsmall fml-green">a</text>
+            <text x="290" y="30" class="fml fml-small">η)</text>
+            <!-- dt dη -->
+            <text x="140" y="68" class="fml fml-cyan" font-style="normal">dt dη</text>
+          </svg>
         </div>
         <span class="formula-label">Transformada de Fourier 2D</span>
       </div>
 
+      <!-- KALMAN -->
       <div class="formula-card">
         <span class="formula-chip">Kalman · State Space</span>
-        <div class="formula-body formula-body--col">
-          <div class="formula-line">
-            <span class="fm">x</span><span class="fm-sub">k</span>
-            <span class="fm fm-op">=</span>
-            <span class="fm">Φ x</span><span class="fm-sub">k−1</span>
-            <span class="fm fm-op">+</span>
-            <span class="fm">w</span><span class="fm-sub">k−1</span>
-          </div>
-          <div class="formula-line">
-            <span class="fm">z</span><span class="fm-sub">k</span>
-            <span class="fm fm-op">=</span>
-            <span class="fm">H x</span><span class="fm-sub">k</span>
-            <span class="fm fm-op">+</span>
-            <span class="fm">v</span><span class="fm-sub">k</span>
-          </div>
+        <div class="formula-body">
+          <svg viewBox="0 0 260 80" xmlns="http://www.w3.org/2000/svg" class="fml-svg">
+            <!-- x_k = Φ x_{k-1} + w_{k-1} -->
+            <text x="0" y="30" class="fml" font-style="italic">x</text>
+            <text x="14" y="36" class="fml fml-small fml-green">k</text>
+            <text x="26" y="30" class="fml fml-cyan">=</text>
+            <text x="40" y="30" class="fml" font-style="italic">Φ x</text>
+            <text x="78" y="36" class="fml fml-small fml-green">k−1</text>
+            <text x="106" y="30" class="fml fml-cyan">+</text>
+            <text x="120" y="30" class="fml" font-style="italic">w</text>
+            <text x="136" y="36" class="fml fml-small fml-green">k−1</text>
+            <!-- z_k = H x_k + v_k -->
+            <text x="0" y="66" class="fml" font-style="italic">z</text>
+            <text x="12" y="72" class="fml fml-small fml-green">k</text>
+            <text x="24" y="66" class="fml fml-cyan">=</text>
+            <text x="38" y="66" class="fml" font-style="italic">H x</text>
+            <text x="72" y="72" class="fml fml-small fml-green">k</text>
+            <text x="84" y="66" class="fml fml-cyan">+</text>
+            <text x="98" y="66" class="fml" font-style="italic">v</text>
+            <text x="112" y="72" class="fml fml-small fml-green">k</text>
+          </svg>
         </div>
         <span class="formula-label">Filtro de Kalman</span>
       </div>
 
+      <!-- RADAR -->
       <div class="formula-card">
         <span class="formula-chip">Radar · Link Budget</span>
         <div class="formula-body">
-          <span class="fm">P</span><span class="fm-sub">e</span>
-          <span class="fm fm-op">=</span>
-          <span class="fm-frac">
-            <span class="fm-num">P</span><span class="fm-num-sub">s</span>
-            <span class="fm-num"> G</span><span class="fm-num-sup">2</span>
-            <span class="fm-num"> σ λ</span><span class="fm-num-sup">2</span>
-            <span class="fm-bar"></span>
-            <span class="fm-den">(4π)</span><span class="fm-den-sup">3</span>
-            <span class="fm-den"> R</span><span class="fm-den-sup">4</span>
-          </span>
+          <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg" class="fml-svg">
+            <!-- Pe = -->
+            <text x="0" y="50" class="fml" font-style="italic">P</text>
+            <text x="14" y="56" class="fml fml-small fml-green">e</text>
+            <text x="24" y="50" class="fml fml-cyan">=</text>
+            <!-- fraction bar -->
+            <line x1="44" y1="48" x2="240" y2="48" stroke="#00d4ff" stroke-width="1.2" opacity="0.7"/>
+            <!-- numerator: Ps G² σ λ² -->
+            <text x="60" y="38" class="fml" font-style="italic">P</text>
+            <text x="74" y="44" class="fml fml-small fml-green">s</text>
+            <text x="84" y="38" class="fml" font-style="italic">G</text>
+            <text x="98" y="28" class="fml fml-small fml-cyan">2</text>
+            <text x="108" y="38" class="fml" font-style="italic">σ λ</text>
+            <text x="138" y="28" class="fml fml-small fml-cyan">2</text>
+            <!-- denominator: (4π)³ R⁴ -->
+            <text x="52" y="72" class="fml" font-style="italic">(4π)</text>
+            <text x="98" y="62" class="fml fml-small fml-cyan">3</text>
+            <text x="110" y="72" class="fml" font-style="italic">R</text>
+            <text x="124" y="62" class="fml fml-small fml-cyan">4</text>
+          </svg>
         </div>
         <span class="formula-label">Equação de Radar</span>
       </div>
 
+      <!-- SINC -->
       <div class="formula-card">
         <span class="formula-chip">DSP · Pulse Shape</span>
         <div class="formula-body">
-          <span class="fm">sinc(Bτ)</span>
-          <span class="fm fm-op">=</span>
-          <span class="fm-frac">
-            <span class="fm-num">sin(πBτ)</span>
-            <span class="fm-bar"></span>
-            <span class="fm-den">πBτ</span>
-          </span>
+          <svg viewBox="0 0 260 80" xmlns="http://www.w3.org/2000/svg" class="fml-svg">
+            <!-- sinc(Bτ) = -->
+            <text x="0" y="46" class="fml" font-style="italic">sinc(Bτ)</text>
+            <text x="104" y="46" class="fml fml-cyan">=</text>
+            <!-- fraction bar -->
+            <line x1="122" y1="44" x2="250" y2="44" stroke="#00d4ff" stroke-width="1.2" opacity="0.7"/>
+            <!-- numerator: sin(πBτ) -->
+            <text x="130" y="34" class="fml" font-style="italic">sin(πBτ)</text>
+            <!-- denominator: πBτ -->
+            <text x="152" y="68" class="fml" font-style="italic">πBτ</text>
+          </svg>
         </div>
         <span class="formula-label">Função sinc</span>
       </div>
