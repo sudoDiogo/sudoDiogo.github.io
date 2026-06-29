@@ -47,7 +47,7 @@
       </h1>
       <p class="hero-subtitle">
         Estudante de Engenharia de Telecomunicações fazendo
-        a disciplina de Algoritmos e Programação
+        a disciplina de Algoritmos e Programação.
       </p>
       <div class="hero-cta">
         <a href="#projetos" class="btn btn-primary">ver projetos</a>
@@ -75,6 +75,78 @@
       </div>
     </div>
   </section>
+
+  <!-- FÓRMULAS TELECOM -->
+  <div class="formulas-strip" aria-label="Fórmulas de Engenharia de Telecomunicações">
+    <div class="formulas-inner">
+
+      <div class="formula-card reveal">
+        <span class="formula-chip">SAR · 2D-FFT</span>
+        <div class="formula-body">
+          <span class="fm">S(k</span><span class="fm-sub">r</span><span class="fm">,k</span><span class="fm-sub">a</span><span class="fm">)</span>
+          <span class="fm fm-op">=</span>
+          <span class="fm fm-op">∬</span>
+          <span class="fm">s(t,η)</span>
+          <span class="fm">e</span><span class="fm-sup">−j(k<span class="fm-subsup">r</span>t + k<span class="fm-subsup">a</span>η)</span>
+          <span class="fm fm-op"> dt dη</span>
+        </div>
+        <span class="formula-label">Transformada de Fourier 2D</span>
+      </div>
+
+      <div class="formula-card reveal">
+        <span class="formula-chip">Kalman · State Space</span>
+        <div class="formula-body formula-body--col">
+          <div class="formula-line">
+            <span class="fm">x</span><span class="fm-sub">k</span>
+            <span class="fm fm-op">=</span>
+            <span class="fm">Φ x</span><span class="fm-sub">k−1</span>
+            <span class="fm fm-op">+</span>
+            <span class="fm">w</span><span class="fm-sub">k−1</span>
+          </div>
+          <div class="formula-line">
+            <span class="fm">z</span><span class="fm-sub">k</span>
+            <span class="fm fm-op">=</span>
+            <span class="fm">H x</span><span class="fm-sub">k</span>
+            <span class="fm fm-op">+</span>
+            <span class="fm">v</span><span class="fm-sub">k</span>
+          </div>
+        </div>
+        <span class="formula-label">Filtro de Kalman</span>
+      </div>
+
+      <div class="formula-card reveal">
+        <span class="formula-chip">Radar · Link Budget</span>
+        <div class="formula-body">
+          <span class="fm">P</span><span class="fm-sub">e</span>
+          <span class="fm fm-op">=</span>
+          <span class="fm-frac">
+            <span class="fm-num">P</span><span class="fm-num-sub">s</span>
+            <span class="fm-num"> G</span><span class="fm-num-sup">2</span>
+            <span class="fm-num"> σ λ</span><span class="fm-num-sup">2</span>
+            <span class="fm-bar"></span>
+            <span class="fm-den">(4π)</span><span class="fm-den-sup">3</span>
+            <span class="fm-den"> R</span><span class="fm-den-sup">4</span>
+          </span>
+        </div>
+        <span class="formula-label">Equação de Radar</span>
+      </div>
+
+      <div class="formula-card reveal">
+        <span class="formula-chip">DSP · Pulse Shape</span>
+        <div class="formula-body">
+          <span class="fm">sinc(Bτ)</span>
+          <span class="fm fm-op">=</span>
+          <span class="fm-frac">
+            <span class="fm-num">sin(πBτ)</span>
+            <span class="fm-bar"></span>
+            <span class="fm-den">πBτ</span>
+          </span>
+        </div>
+        <span class="formula-label">Função sinc</span>
+      </div>
+
+    </div>
+  </div>
 
   <!-- DESTAQUES -->
   <section id="destaques" class="destaques">
