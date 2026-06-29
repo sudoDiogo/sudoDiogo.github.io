@@ -231,7 +231,9 @@ const PROJECTS = [
     tech: ["Google meet"],
     desc: "Entrevista sobre exercícios de pseudocódigo",
     concepts: ["entrevista", "lógica"],
-    files: []
+    files: [
+      { label: "relato_entrevista.txt", path: "arquivos/relato_entrevista.txt"} 
+    ]
   },
   {
     id: "p18",
@@ -259,7 +261,9 @@ const PROJECTS = [
     tech: ["Python"],
     desc: "Descrição breve do que foi desenvolvido neste projeto.",
     concepts: ["banco de dados", "SQLite", "queries"],
-    files: []
+    files: [
+      { label: "avaliacao_alegrete.txt", path: "arquivos/avaliacao_alegrete.txt"} 
+    ]
   },
 
   {
