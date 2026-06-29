@@ -1,0 +1,6 @@
+Agora consegui adicionar os arquivos, faltam apenas uns poucos últimos. Praticamente quase tudo funcional. 
+Último commit (são 15:17 e faltam 13 minutos para encerrar a atividade):
+bdddb5f0eda10e25ccde0e003ad4220f97968775 
+Colegas com quem eu já havia conversado sobre o site: 
+- Lucas Viana 
+- Um outro colega da elétrica que não sei o nome, e perguntar a essa altura ficará estranho.
