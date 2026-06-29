@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Seu Nome — Portfólio</title>
+<title>Diogo — Portfólio</title>
 <meta name="description" content="Portfólio de projetos e atividades de programação.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="arquivos/antena.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +19,7 @@
 <header class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="#home" class="logo">
-      <span class="logo-bracket">&lt;</span>Seu Nome<span class="logo-bracket">/&gt;</span>
+      <span class="logo-bracket">&lt;</span>Diogo<span class="logo-bracket">/&gt;</span>
     </a>
     <nav class="nav-links">
       <a href="#home"      class="nav-link active" data-label="01">home</a>
@@ -43,7 +44,7 @@
         <span class="terminal-line">$ whoami</span>
       </p>
       <h1 class="hero-title">
-        Olá, eu sou <span class="gradient-text">Seu Nome</span>
+        Olá, eu sou <span class="gradient-text">Diogo</span>
       </h1>
       <p class="hero-subtitle">
         Estudante de programação documentando, semestre a semestre,
@@ -64,7 +65,7 @@
         </div>
         <pre class="code-body"><code><span class="c-key">class</span> <span class="c-class">Estudante</span>:
     <span class="c-key">def</span> <span class="c-fn">__init__</span>(<span class="c-self">self</span>):
-        <span class="c-self">self</span>.nome = <span class="c-str">"Seu Nome"</span>
+        <span class="c-self">self</span>.nome = <span class="c-str">"Diogo"</span>
         <span class="c-self">self</span>.foco = <span class="c-str">"programação"</span>
         <span class="c-self">self</span>.status = <span class="c-str">"aprendendo"</span>
         <span class="c-self">self</span>.cafe = <span class="c-num">True</span>
@@ -75,108 +76,6 @@
       </div>
     </div>
   </section>
-
-  <!-- FÓRMULAS TELECOM -->
-  <div class="formulas-strip" aria-label="Fórmulas de Engenharia de Telecomunicações">
-    <div class="formulas-inner">
-
-      <!-- SAR 2D-FFT -->
-      <div class="formula-card">
-        <span class="formula-chip">SAR · 2D-FFT</span>
-        <div class="formula-body">
-          <svg viewBox="0 0 340 110" xmlns="http://www.w3.org/2000/svg" class="fml-svg">
-            <text x="0"   y="58" class="fml fi">S(k</text>
-            <text x="56"  y="68" class="fml fml-small fml-green fi">r</text>
-            <text x="66"  y="58" class="fml fi">,k</text>
-            <text x="94"  y="68" class="fml fml-small fml-green fi">a</text>
-            <text x="104" y="58" class="fml fi">)</text>
-            <text x="122" y="58" class="fml fml-cyan">=</text>
-            <text x="146" y="64" class="fml fml-large fml-cyan">∬</text>
-            <text x="178" y="58" class="fml fi">s(t,η)</text>
-            <text x="252" y="58" class="fml fi">e</text>
-            <text x="266" y="36" class="fml fml-small fi">−j(k</text>
-            <text x="306" y="42" class="fml fml-xsmall fml-green fi">r</text>
-            <text x="314" y="36" class="fml fml-small fi">t</text>
-            <text x="0"   y="90" class="fml fml-small fi">+ k</text>
-            <text x="34"  y="96" class="fml fml-xsmall fml-green fi">a</text>
-            <text x="42"  y="90" class="fml fml-small fi">η)</text>
-            <text x="178" y="90" class="fml fml-cyan">dt dη</text>
-          </svg>
-        </div>
-        <span class="formula-label">Transformada de Fourier 2D</span>
-      </div>
-
-      <!-- KALMAN -->
-      <div class="formula-card">
-        <span class="formula-chip">Kalman · State Space</span>
-        <div class="formula-body">
-          <svg viewBox="0 0 280 110" xmlns="http://www.w3.org/2000/svg" class="fml-svg">
-            <text x="0"   y="42" class="fml fi">x</text>
-            <text x="18"  y="54" class="fml fml-small fml-green fi">k</text>
-            <text x="32"  y="42" class="fml fml-cyan">=</text>
-            <text x="52"  y="42" class="fml fi">Φ x</text>
-            <text x="100" y="54" class="fml fml-small fml-green fi">k−1</text>
-            <text x="138" y="42" class="fml fml-cyan">+</text>
-            <text x="158" y="42" class="fml fi">w</text>
-            <text x="178" y="54" class="fml fml-small fml-green fi">k−1</text>
-            <text x="0"   y="86" class="fml fi">z</text>
-            <text x="16"  y="98" class="fml fml-small fml-green fi">k</text>
-            <text x="30"  y="86" class="fml fml-cyan">=</text>
-            <text x="50"  y="86" class="fml fi">H x</text>
-            <text x="90"  y="98" class="fml fml-small fml-green fi">k</text>
-            <text x="104" y="86" class="fml fml-cyan">+</text>
-            <text x="124" y="86" class="fml fi">v</text>
-            <text x="142" y="98" class="fml fml-small fml-green fi">k</text>
-          </svg>
-        </div>
-        <span class="formula-label">Filtro de Kalman</span>
-      </div>
-
-      <!-- RADAR -->
-      <div class="formula-card">
-        <span class="formula-chip">Radar · Link Budget</span>
-        <div class="formula-body">
-          <svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg" class="fml-svg">
-            <text x="0"  y="62" class="fml fi">P</text>
-            <text x="18" y="74" class="fml fml-small fml-green fi">e</text>
-            <text x="32" y="62" class="fml fml-cyan">=</text>
-            <line x1="56" y1="60" x2="290" y2="60" stroke="#00d4ff" stroke-width="1.5" opacity="0.8"/>
-            <!-- numerador -->
-            <text x="72"  y="48" class="fml fi">P</text>
-            <text x="88"  y="56" class="fml fml-small fml-green fi">s</text>
-            <text x="100" y="48" class="fml fi">G</text>
-            <text x="118" y="34" class="fml fml-small fml-cyan fi">2</text>
-            <text x="128" y="48" class="fml fi">σ λ</text>
-            <text x="162" y="34" class="fml fml-small fml-cyan fi">2</text>
-            <!-- denominador -->
-            <text x="62"  y="88" class="fml fi">(4π)</text>
-            <text x="110" y="76" class="fml fml-small fml-cyan fi">3</text>
-            <text x="124" y="88" class="fml fi">R</text>
-            <text x="142" y="76" class="fml fml-small fml-cyan fi">4</text>
-          </svg>
-        </div>
-        <span class="formula-label">Equação de Radar</span>
-      </div>
-
-      <!-- SINC -->
-      <div class="formula-card">
-        <span class="formula-chip">DSP · Pulse Shape</span>
-        <div class="formula-body">
-          <svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg" class="fml-svg">
-            <text x="0"   y="62" class="fml fi">sinc(Bτ)</text>
-            <text x="118" y="62" class="fml fml-cyan">=</text>
-            <line x1="144" y1="60" x2="290" y2="60" stroke="#00d4ff" stroke-width="1.5" opacity="0.8"/>
-            <!-- numerador -->
-            <text x="148" y="46" class="fml fi">sin(πBτ)</text>
-            <!-- denominador -->
-            <text x="178" y="86" class="fml fi">πBτ</text>
-          </svg>
-        </div>
-        <span class="formula-label">Função sinc</span>
-      </div>
-
-    </div>
-  </div>
 
   <!-- DESTAQUES -->
   <section id="destaques" class="destaques">
