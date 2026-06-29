@@ -21,9 +21,11 @@
       <span class="logo-bracket">&lt;</span>Diogo<span class="logo-bracket">/&gt;</span>
     </a>
     <nav class="nav-links">
-      <a href="#home"     class="nav-link active" data-label="01">home</a>
-      <a href="#projetos" class="nav-link"         data-label="02">atividades</a>
-      <a href="#stack"    class="nav-link"         data-label="03">stack</a>
+      <a href="#home"      class="nav-link active" data-label="01">home</a>
+      <a href="#destaques" class="nav-link"         data-label="02">destaques</a>
+      <a href="#projetos"  class="nav-link"         data-label="03">projetos</a>
+      <a href="#sorting"   class="nav-link"         data-label="04">sorting</a>
+      <a href="#stack"     class="nav-link"         data-label="05">stack</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -44,11 +46,11 @@
         Olá, eu sou <span class="gradient-text">Diogo</span>
       </h1>
       <p class="hero-subtitle">
-        Estudante de engenharia de telecomunicações fazendo
-        a disciplina Algoritmos e Programação.
+        Estudante de Engenharia de Telecomunicações fazendo
+        a disciplina de Algoritmos e Programação
       </p>
       <div class="hero-cta">
-        <a href="#projetos" class="btn btn-primary">ver atividades</a>
+        <a href="#projetos" class="btn btn-primary">ver projetos</a>
         <a href="#stack"    class="btn btn-ghost">ferramentas usadas</a>
       </div>
     </div>
@@ -62,7 +64,7 @@
         </div>
         <pre class="code-body"><code><span class="c-key">class</span> <span class="c-class">Estudante</span>:
     <span class="c-key">def</span> <span class="c-fn">__init__</span>(<span class="c-self">self</span>):
-        <span class="c-self">self</span>.nome = <span class="c-str">"Seu Nome"</span>
+        <span class="c-self">self</span>.nome = <span class="c-str">"Diogo"</span>
         <span class="c-self">self</span>.foco = <span class="c-str">"programação"</span>
         <span class="c-self">self</span>.status = <span class="c-str">"aprendendo"</span>
         <span class="c-self">self</span>.cafe = <span class="c-num">True</span>
@@ -71,6 +73,61 @@
         <span class="c-key">return</span> <span class="c-str">"construir coisas boas"</span>
 <span class="cursor-blink">_</span></code></pre>
       </div>
+    </div>
+  </section>
+
+  <!-- DESTAQUES -->
+  <section id="destaques" class="destaques">
+    <div class="section-head">
+      <p class="section-eyebrow"><span class="terminal-line">$ cat destaques.txt</span></p>
+      <h2 class="section-title">Destaques</h2>
+      <p class="section-desc">Materiais e registros selecionados do semestre — visualize diretamente abaixo.</p>
+    </div>
+    <div class="destaques-grid">
+
+      <!-- Imagem 1 -->
+      <div class="destaque-card reveal">
+        <div class="destaque-label">
+          <svg viewBox="0 0 16 16" fill="none" width="13" height="13">
+            <rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M1 10l4-4 3 3 3-4 4 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          planejamento_missao.png
+        </div>
+        <div class="destaque-media">
+          <img src="arquivos/planejamento_missao.png" alt="Planejamento da missão" loading="lazy">
+        </div>
+      </div>
+
+      <!-- PDF renderizado via PDF.js -->
+      <div class="destaque-card reveal">
+        <div class="destaque-label">
+          <svg viewBox="0 0 16 16" fill="none" width="13" height="13">
+            <path d="M3 1h7l3 3v11H3V1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M10 1v3h3M5 8h6M5 11h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          12pdf.pdf
+        </div>
+        <div class="destaque-media destaque-media--pdf">
+          <canvas id="pdf-preview-canvas"></canvas>
+          <p class="pdf-loading-msg" id="pdf-loading-msg"><span class="terminal-line">$ renderizando pdf…</span></p>
+        </div>
+      </div>
+
+      <!-- Imagem 2 -->
+      <div class="destaque-card reveal">
+        <div class="destaque-label">
+          <svg viewBox="0 0 16 16" fill="none" width="13" height="13">
+            <rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M1 10l4-4 3 3 3-4 4 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          equipamentos.png
+        </div>
+        <div class="destaque-media">
+          <img src="arquivos/equipamentos.png" alt="Equipamentos" loading="lazy">
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -86,6 +143,38 @@
     </div>
     <div class="projects-grid" id="projects-grid">
       <p class="loading-state"><span class="terminal-line">$ carregando projetos...</span></p>
+    </div>
+  </section>
+
+  <!-- SORTING VISUALIZER -->
+  <section id="sorting" class="sorting-section">
+    <div class="section-head">
+      <p class="section-eyebrow"><span class="terminal-line">$ python bubble_sort.py --visualize</span></p>
+      <h2 class="section-title">Bubble Sort — ao vivo</h2>
+      <p class="section-desc">Assista o algoritmo de ordenação trabalhar em tempo real. Cada par de barras adjacentes é comparado e trocado até que o array esteja ordenado.</p>
+    </div>
+
+    <div class="sorter-wrap">
+      <div class="sorter-controls">
+        <button class="sorter-btn sorter-btn--primary" id="sortBtn">▶ iniciar</button>
+        <button class="sorter-btn" id="resetBtn">↺ novo array</button>
+        <div class="sorter-speed">
+          <label class="sorter-speed-label" for="speedRange">velocidade</label>
+          <input type="range" id="speedRange" min="1" max="5" value="3" class="sorter-range">
+          <span class="sorter-speed-val" id="speedVal">3×</span>
+        </div>
+        <div class="sorter-stat">
+          comparações: <span id="cmpCount">0</span>
+          &nbsp;·&nbsp;
+          trocas: <span id="swpCount">0</span>
+        </div>
+      </div>
+      <div class="sorter-stage" id="sorterStage"></div>
+      <div class="sorter-legend">
+        <span class="legend-item"><span class="legend-dot" style="background:var(--cyan)"></span>comparando</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#ff6b6b"></span>trocando</span>
+        <span class="legend-item"><span class="legend-dot" style="background:var(--green)"></span>ordenado</span>
+      </div>
     </div>
   </section>
 
@@ -201,7 +290,9 @@
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="projects.js"></script>
 <script src="script.js"></script>
+<script src="sorting.js"></script>
 </body>
 </html>
