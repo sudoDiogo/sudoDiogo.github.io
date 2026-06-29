@@ -285,8 +285,8 @@ const PROJECTS = [
   {
     id: "p21",
     title: "Postar o link e um print do seu site .github.io",
-    tag: "Semana 18",
-    status: "em breve",
+    tag: "Github.io",
+    status: "Completo",
     tech: ["Python"],
     desc: "Descrição breve do que foi desenvolvido neste projeto.",
     concepts: ["banco de dados", "SQLite", "queries"],
@@ -295,12 +295,40 @@ const PROJECTS = [
       { label: "link.txt", path: "arquivos/link.txt" }
     ]
   },
-  
+
   {
     id: "p22",
+    title: "Projeto Final da Disciplina: Portfólio de Entregas no GitHub.io (Versão 1)",
+    tag: "Github.io",
+    status: "Completo",
+    tech: ["Python"],
+    desc: "Descrição breve do que foi desenvolvido neste projeto.",
+    concepts: ["banco de dados", "SQLite", "queries"],
+    files: [
+      { label: "print_site.png", path: "arquivos/print_site.png" },
+      { label: "link.txt", path: "arquivos/link.txt" }
+    ]
+  },
+
+  {
+    id: "p23",
+    title: "Atividade em Aula: Portfólio no GitHub.io – Versão 26.03.2026",
+    tag: "Github.io",
+    status: "Completo",
+    tech: ["Python"],
+    desc: "Descrição breve do que foi desenvolvido neste projeto.",
+    concepts: ["banco de dados", "SQLite", "queries"],
+    files: [
+      { label: "resumo26.06.2026.txt", path: "arquivos/resumo26.06.2026.txt" },
+      { label: "link.txt", path: "arquivos/link.txt" }
+    ]
+  },
+  
+  {
+    id: "p24",
     title: "Projeto Final",
     tag: "Projeto Final",
-    status: "em breve",
+    status: "Completo",
     tech: ["Python", "Claude AI"],
     desc: "Projeto integrador do semestre, reunindo os conceitos trabalhados ao longo das aulas.",
     concepts: ["integração", "projeto completo", "boas práticas"],
